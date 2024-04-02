@@ -7,14 +7,19 @@ public class Player : MonoBehaviour
     [SerializeField] private float _movSpeed = 3f;
     [SerializeField] private float _RotationSpeed = 100f;
     [SerializeField] private float _jumpForce = 300;
+    private float _energy = 100;
+
     private float _xAxis;
     private float _yAxis;
     private Vector3 _dir;
-    public Rigidbody myRigid;
+    private Rigidbody _myRigid;
+
+    [SerializeField] private LittleStone _littleStone;
+    [SerializeField] private GameObject _firePoint1;
 
     private void Start()
     {
-        myRigid = GetComponent<Rigidbody>();
+        _myRigid = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -27,8 +32,23 @@ public class Player : MonoBehaviour
             _dir = transform.forward * _yAxis;
             Movement();
         }
-
         JumpMoving();
+        Attack();
+    }
+
+    public void EnergyChange(float amount)
+    {
+        _energy += amount;
+        if (_energy <= 0)
+        {
+            //metodo de muerte
+        }
+    }
+
+    void Dead()
+    {
+        //Animacion de muerte
+        //Sonido de muerte
     }
 
     void Movement()
@@ -44,7 +64,16 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            myRigid.AddForce(Vector3.up * _jumpForce, ForceMode.Force);
+            _myRigid.AddForce(Vector3.up * _jumpForce, ForceMode.Force);
+        }
+    }
+
+    void Attack()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            LittleStone _stonePF =  Instantiate(_littleStone, _firePoint1.transform.position, this.transform.rotation);
+            //_stonePF.transform.rotation = this.transform.rotation;
         }
     }
 }
