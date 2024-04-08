@@ -16,10 +16,12 @@ public class Player : MonoBehaviour
 
     [SerializeField] private LittleStone _littleStone;
     [SerializeField] private GameObject _firePoint1;
+    [SerializeField] private Inventory _myInventory;
 
     private void Start()
     {
-        _myRigid = GetComponent<Rigidbody>();
+        _myRigid = this.GetComponent<Rigidbody>();
+        _myInventory = this.GetComponent<Inventory>();
     }
 
     void Update()

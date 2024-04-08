@@ -1286,6 +1286,7 @@ GameObject:
   - component: {fileID: 1023121251}
   - component: {fileID: 1023121255}
   - component: {fileID: 1023121250}
+  - component: {fileID: 1023121256}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1310,6 +1311,7 @@ MonoBehaviour:
   _jumpForce: 600
   _littleStone: {fileID: 7850662486293492010, guid: 81f1a33d1572b4847a77c1d678159e79, type: 3}
   _firePoint1: {fileID: 1571189438}
+  _myInventory: {fileID: 0}
 --- !u!65 &1023121251
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1426,6 +1428,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1023121256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023121249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0749d26edadd7e74f8a37b2ef4e4e35f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInventory: Mochila
 --- !u!1 &1032414949
 GameObject:
   m_ObjectHideFlags: 0
