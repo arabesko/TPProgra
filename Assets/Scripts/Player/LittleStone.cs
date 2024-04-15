@@ -17,7 +17,7 @@ public class LittleStone : MonoBehaviour
     {
         _direction = this.transform.forward * _speed;
         _prefabRB.AddForce(_direction, ForceMode.Force);
-        Destroy(this.gameObject, 50);
+        Destroy(this.gameObject, 10);
     }
 
 }

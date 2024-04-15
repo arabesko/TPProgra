@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -9,18 +10,23 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _instancePoin1;
     [SerializeField] private GameObject _bulletPrefab1;
     private Animator _animator;
+    [SerializeField] Fruit _fruit;
 
     [Header("Propiedades player")]
-    [SerializeField] private float _xAxis;
-    [SerializeField] private float _zAxis;
+    private float _xAxis;
+    private float _zAxis;
     private string _xAxisName = "xAxis";
     private string _zAxisName = "zAxis";
     private string _attack1 = "attack1";
+    private string _jump = "jump";
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _speed;
+    [SerializeField] private float _energy;
+    [SerializeField] private float _mana;
+    [SerializeField] private bool _isEnabledToCollect;
 
     [Header("Propiedades player")]
-    [SerializeField] private Vector3 _direction;
+    private Vector3 _direction;
 
 
     private void Awake()
@@ -33,13 +39,24 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _rB.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+            print("funciona");
+            _animator.SetTrigger(_jump);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
             //Attack1();
             _animator.SetTrigger(_attack1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            if (_isEnabledToCollect)
+            {
+                //Animación
+                print("si entra");
+                Destroy(_fruit.gameObject);
+            }
         }
 
         _xAxis = Input.GetAxis("Horizontal");
@@ -66,5 +83,43 @@ public class Player : MonoBehaviour
     private void Attack1()
     {
        Instantiate(_bulletPrefab1, _instancePoin1.position, this.transform.rotation);
+    }
+
+    public void Jump()
+    {
+        _rB.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _fruit = collision.gameObject.GetComponent<Fruit>();
+        if (collision.gameObject.layer == 7)
+        {
+            _isEnabledToCollect = true;
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Fruit _fruit = collision.gameObject.GetComponent<Fruit>();
+        if (collision.gameObject.layer == 7)
+        {
+            _isEnabledToCollect = false;
+        }
+    }
+    public void ModifyEnergy(float ammount)
+    {
+        if ((_energy + ammount) >= 100)
+        {
+            _energy = 100;
+        }
+        else if ((_energy - ammount) <= 0)
+        {
+            //Muerte
+        }
+        else
+        {
+            _energy += ammount;
+        }
     }
 }
