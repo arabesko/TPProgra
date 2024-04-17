@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _instancePoin1;
     [SerializeField] private GameObject _bulletPrefab1;
     private Animator _animator;
-    [SerializeField] Fruit _fruit;
+    [SerializeField] Collectibles _collect;
+    [SerializeField] Inventory _myInventory;
 
     [Header("Propiedades player")]
     private float _xAxis;
@@ -24,6 +25,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float _energy;
     [SerializeField] private float _mana;
     [SerializeField] private bool _isEnabledToCollect;
+    [SerializeField] private int _InventoryLimit;
+    private bool _isInventoryFull;
 
     [Header("Propiedades player")]
     private Vector3 _direction;
@@ -33,13 +36,13 @@ public class Player : MonoBehaviour
     {
         _rB = this.GetComponent<Rigidbody>();
         _animator = this.GetComponent<Animator>();
+        _myInventory = this.GetComponent <Inventory>();
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            print("funciona");
             _animator.SetTrigger(_jump);
         }
 
@@ -53,9 +56,16 @@ public class Player : MonoBehaviour
         {
             if (_isEnabledToCollect)
             {
-                //Animación
-                print("si entra");
-                Destroy(_fruit.gameObject);
+                if(_myInventory.items.Count < _InventoryLimit)
+                {
+                    _myInventory.AddItems(_collect.element, _collect.life);
+                } 
+                else
+                {
+                    print("La alforja está llena");
+                }
+                
+                _animator.SetTrigger("collect");
             }
         }
 
@@ -64,6 +74,16 @@ public class Player : MonoBehaviour
 
         _animator.SetFloat(_xAxisName, _xAxis);
         _animator.SetFloat(_zAxisName, _zAxis);
+    }
+
+    public void DeleleteCollectibles()
+    {
+        if (_myInventory.items.Count <= _InventoryLimit && _isInventoryFull == false)
+        {
+            Destroy(_collect.gameObject);
+            _isEnabledToCollect = false;
+            if (_myInventory.items.Count == _InventoryLimit) _isInventoryFull = true;
+        }
     }
 
     private void FixedUpdate()
@@ -90,21 +110,22 @@ public class Player : MonoBehaviour
         _rB.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        _fruit = collision.gameObject.GetComponent<Fruit>();
-        if (collision.gameObject.layer == 7)
+        _collect = other.gameObject.GetComponent<Collectibles>();
+        if (_collect != null)
         {
             _isEnabledToCollect = true;
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    private void OnTriggerExit(Collider other)
     {
-        Fruit _fruit = collision.gameObject.GetComponent<Fruit>();
-        if (collision.gameObject.layer == 7)
+        _collect = other.gameObject.GetComponent<Collectibles>();
+        if (_collect != null)
         {
             _isEnabledToCollect = false;
+            _collect = null;
         }
     }
     public void ModifyEnergy(float ammount)

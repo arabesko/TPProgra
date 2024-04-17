@@ -5,15 +5,22 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     public string nameInventory;
-    public List<int> keys = new List<int>();
+    public List<string> items = new List<string>();
+    public List<int> itemsPower = new List<int>();
 
-    public void AddKeys (int code)
+    public void AddItems (string item, int life)
     {
-        keys.Add(code);
+        items.Add(item);
+        itemsPower.Add(life);
     }
 
-    public bool HasKey(int code)
+    public void DeleteItem(string item, int life)
     {
-        return keys.Contains(code);
+
+    }
+
+    public bool HasItemsy(string item)
+    {
+        return items.Contains(item);
     }
 }
