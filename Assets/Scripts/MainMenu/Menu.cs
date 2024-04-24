@@ -11,7 +11,8 @@ public class Menu : MonoBehaviour
     }
    public void Salir()
     {
-        Application.Quit();
         Debug.Log("Se cerrará el juego");
+        Application.Quit();
+        
     }
 }
