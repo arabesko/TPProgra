@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class NewBehaviourScript : MonoBehaviour
 {
-    public GameObject VenomBall;
-    public Transform Player;
-    public float turningSpeed;
-    public float ActionRange;
-    public float VisualRange;
-    public Transform Rotador;
-    public LayerMask DetectableLayers;
-    public Transform puntoDeDisparo;
+    [SerializeField] int life;
+    [SerializeField] float damage;
+    [SerializeField] GameObject VenomBallPrefab;
+    [SerializeField] Transform Player;
+    [SerializeField] float turningSpeed;
+    [SerializeField] float ActionRange;
+    [SerializeField] float VisualRange;
+    [SerializeField] Transform Rotador;
+    [SerializeField] LayerMask DetectableLayers;
+    [SerializeField] Transform puntoDeDisparo;
 
     public float ShootTimer;
     private float _counter;
@@ -52,7 +54,7 @@ public class NewBehaviourScript : MonoBehaviour
         if(_counter >= ShootTimer)
         {
             _counter = 0;
-            Instantiate(VenomBall, puntoDeDisparo.position, puntoDeDisparo.rotation);
+            Instantiate(VenomBallPrefab, puntoDeDisparo.position, puntoDeDisparo.rotation);
         }
     }
 
