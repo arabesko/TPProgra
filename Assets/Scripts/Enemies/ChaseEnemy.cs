@@ -34,7 +34,14 @@ public class ChaseEnemy : MonoBehaviour
 
             transform.position += positionDirection * speed * Time.deltaTime;
             
+            if (Vector3.Distance(transform.position, positions[index]) < 0.1f)
+            {
+                index++;
+                if (index >= positions.Length) { index = 0; }
+                
+            }
         }
+       
        
   
             
