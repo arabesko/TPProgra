@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     private string _zAxisName = "zAxis";
     private string _attack1 = "attack1";
     private string _jump = "jump";
+    private float _speedRotation = 3;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _speed;
     [SerializeField] private float _energy;
@@ -74,6 +75,8 @@ public class Player : MonoBehaviour
 
         _animator.SetFloat(_xAxisName, _xAxis);
         _animator.SetFloat(_zAxisName, _zAxis);
+
+        this.transform.Rotate(0, Input.GetAxis("Mouse X") * _speedRotation, 0);
     }
 
     public void DeleleteCollectibles()
