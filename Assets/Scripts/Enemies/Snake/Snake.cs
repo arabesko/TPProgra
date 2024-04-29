@@ -16,8 +16,8 @@ public class Snake : MonoBehaviour
 
     private float ShootTimer;
     private float _counter;
-    private Vector2[] positions;
-    private int index;
+    [SerializeField] Vector3[] positions;
+    [SerializeField] int index;
 
     void Start()
     {
@@ -58,6 +58,19 @@ public class Snake : MonoBehaviour
         {
             print("Player out of range");
             Spin();
+            Vector3 directionToPosition = (positions[index] - transform.position).normalized;
+            
+
+            transform.position += directionToPosition * UpDownSpeed * Time.deltaTime;
+
+            if (Vector3.Distance(transform.position, positions[index]) < 0.1f)
+            {
+                index++;
+            }
+            if(index >= positions.Length)
+            {
+                index=0;
+            }
         }
        
     }
@@ -105,5 +118,11 @@ public class Snake : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, VisualRange);
+
+        foreach(var position in positions)
+        {
+            Gizmos.color = Color.yellow;
+            Gizmos.DrawSphere(position, 0.2f);
+        }
     }
 }
