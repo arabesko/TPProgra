@@ -2,21 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Snake : MonoBehaviour
 {
     [SerializeField] int life;
-    [SerializeField] float damage;
     [SerializeField] GameObject VenomBallPrefab;
     [SerializeField] Transform Player;
     [SerializeField] float turningSpeed;
+    [SerializeField] float UpDownSpeed;
     [SerializeField] float ActionRange;
     [SerializeField] float VisualRange;
-    [SerializeField] Transform Rotador;
     [SerializeField] LayerMask DetectableLayers;
     [SerializeField] Transform puntoDeDisparo;
 
-    public float ShootTimer;
+    private float ShootTimer;
     private float _counter;
+    private Vector2[] positions;
+    private int index;
 
     void Start()
     {
@@ -31,22 +32,39 @@ public class NewBehaviourScript : MonoBehaviour
 
         if(playerInRange == true)
         {
-            Vector3 directionToPlayer = (Player.position - Rotador.position).normalized;
+            print("Player in range");
+            Vector3 directionToPlayer = (Player.position - transform.position).normalized;
             directionToPlayer.y = 0;
 
-            Debug.DrawRay(Rotador.position, directionToPlayer * VisualRange, Color.red);
+            Debug.DrawRay(transform.position, directionToPlayer * VisualRange, Color.red);
 
             if(Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, VisualRange, DetectableLayers))
             {
 
                 if (hit.transform.CompareTag("Player"))
                 {
+                    print("Te veo");
                     TargetToPlayer();
+                }
+                else
+                {
+                    print("No te veo");
+                    Spin();
                 }
 
             }
         }
+        else
+        {
+            print("Player out of range");
+            Spin();
+        }
        
+    }
+
+    private void Spin()
+    {
+        transform.Rotate(0, turningSpeed * Time.deltaTime, 0);
     }
 
     public void Shoot()
@@ -60,11 +78,11 @@ public class NewBehaviourScript : MonoBehaviour
 
     public void TargetToPlayer()
     {
-        Vector3 directionToPlayer = (Player.position - Rotador.position).normalized;
+        Vector3 directionToPlayer = (Player.position - transform.position).normalized;
         directionToPlayer.y = 0;
 
         Quaternion desiredRotation = Quaternion.LookRotation(directionToPlayer);
-        Rotador.rotation = Quaternion.RotateTowards(Rotador.rotation, desiredRotation, turningSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, desiredRotation, turningSpeed * Time.deltaTime);
 
         Debug.DrawRay(puntoDeDisparo.position, puntoDeDisparo.forward * ActionRange, Color.blue);
 
@@ -73,18 +91,19 @@ public class NewBehaviourScript : MonoBehaviour
 
             if (hit.transform.CompareTag("Player"))
             {
+                print("Te disparo");
                 Shoot();
             }
 
         }
     }
 
-    public void OnDrawGizmos()
+    public void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(Rotador.position, ActionRange);
+        Gizmos.DrawWireSphere(transform.position, ActionRange);
 
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(Rotador.position, VisualRange);
+        Gizmos.DrawWireSphere(transform.position, VisualRange);
     }
 }
