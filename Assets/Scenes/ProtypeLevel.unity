@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641275, b: 0.5748171, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3882,7 +3882,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1075052031}
+    m_TransformParent: {fileID: 427362411}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
       propertyPath: m_LocalScale.x
@@ -3898,15 +3898,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.562
+      value: 0.13399982
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.157
+      value: -0.052000046
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -44.82
+      value: 0.24000168
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3946,10 +3946,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 454309641}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1174991788}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
 --- !u!1 &259447027
 GameObject:
@@ -6935,6 +6932,66 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 413468, guid: 1e4e7284c1efd5f4eb702c799353072c, type: 3}
   m_PrefabInstance: {fileID: 422679675}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &427362410
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 427362411}
+  - component: {fileID: 427362412}
+  m_Layer: 0
+  m_Name: Rotador
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &427362411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427362410}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.478, y: 22.209, z: -45.042}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1174991785}
+  m_Father: {fileID: 1075052031}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427362412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427362410}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1eeebc088cf8f46b4d4ca6a4091526, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  life: 0
+  VenomBallPrefab: {fileID: 561804993}
+  Player: {fileID: 185778969}
+  turningSpeed: 30
+  UpDownSpeed: 0.5
+  ActionRange: 5
+  VisualRange: 7
+  DetectableLayers:
+    serializedVersion: 2
+    m_Bits: 256
+  puntoDeDisparo: {fileID: 511985656}
+  positions:
+  - {x: -6.92, y: 2.41, z: -39.3}
+  - {x: -6.83, y: 0.76, z: -39.1}
+  index: 0
 --- !u!1001 &433951701
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7788,7 +7845,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 451528, guid: 78c29697749a6d44e964f9a0cf83d77a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -74.70354
+      value: -51.5
       objectReference: {fileID: 0}
     - target: {fileID: 451528, guid: 78c29697749a6d44e964f9a0cf83d77a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7796,7 +7853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 451528, guid: 78c29697749a6d44e964f9a0cf83d77a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 27.290012
+      value: 25.4
       objectReference: {fileID: 0}
     - target: {fileID: 451528, guid: 78c29697749a6d44e964f9a0cf83d77a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -10178,7 +10235,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 573627060}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e1eeebc088cf8f46b4d4ca6a4091526, type: 3}
   m_Name: 
@@ -10194,6 +10251,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   puntoDeDisparo: {fileID: 1231665763}
+  positions: []
+  index: 0
 --- !u!1001 &582837012
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10208,7 +10267,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 474106, guid: 069e1e44b643edc4fb4a9d4311a78fb7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.33
+      value: -4.35
       objectReference: {fileID: 0}
     - target: {fileID: 474106, guid: 069e1e44b643edc4fb4a9d4311a78fb7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -10216,7 +10275,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 474106, guid: 069e1e44b643edc4fb4a9d4311a78fb7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 19.2
+      value: 23.59
       objectReference: {fileID: 0}
     - target: {fileID: 474106, guid: 069e1e44b643edc4fb4a9d4311a78fb7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -17741,7 +17800,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1174991785}
+  - {fileID: 427362411}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1075246843
@@ -19592,39 +19651,11 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!1 &1174991784 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
-  m_PrefabInstance: {fileID: 254590009}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1174991785 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8b07fc8a384961741b676e3e71164de9, type: 3}
   m_PrefabInstance: {fileID: 254590009}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1174991788
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174991784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e1eeebc088cf8f46b4d4ca6a4091526, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  life: 0
-  VenomBallPrefab: {fileID: 561804993}
-  Player: {fileID: 185778969}
-  turningSpeed: 30
-  UpDownSpeed: 0
-  ActionRange: 5
-  VisualRange: 7
-  DetectableLayers:
-    serializedVersion: 2
-    m_Bits: 256
-  puntoDeDisparo: {fileID: 511985656}
 --- !u!1001 &1183421989
 PrefabInstance:
   m_ObjectHideFlags: 0
