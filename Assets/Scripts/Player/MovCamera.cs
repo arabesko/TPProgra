@@ -7,6 +7,8 @@ public class MovCamera : MonoBehaviour
     [SerializeField] Transform player;
     [SerializeField] Vector3 position;
     [SerializeField] Vector3 diference;
+    [SerializeField] int speedRotation;
+
     void Start()
     {
         position = new Vector3(-5, 7, -18);
@@ -17,5 +19,14 @@ public class MovCamera : MonoBehaviour
     void Update()
     {
         transform.position = player.transform.position + diference;
+
+        if (Input.GetKey(KeyCode.Q))
+        {
+            transform.Rotate(0, -speedRotation * Time.deltaTime, 0);
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            this.transform.Rotate(0, speedRotation * Time.deltaTime, 0);
+        }
     }
 }
