@@ -14,7 +14,7 @@ public class Snake : MonoBehaviour
     [SerializeField] LayerMask DetectableLayers;
     [SerializeField] Transform puntoDeDisparo;
 
-    private float ShootTimer;
+    public float ShootTimer;
     private float _counter;
     [SerializeField] Vector3[] positions;
     [SerializeField] int index;
@@ -86,6 +86,7 @@ public class Snake : MonoBehaviour
         {
             _counter = 0;
             Instantiate(VenomBallPrefab, puntoDeDisparo.position, puntoDeDisparo.rotation);
+            print("Te disparo");
         }
     }
 
@@ -104,7 +105,7 @@ public class Snake : MonoBehaviour
 
             if (hit.transform.CompareTag("Player"))
             {
-                print("Te disparo");
+                
                 Shoot();
             }
 
