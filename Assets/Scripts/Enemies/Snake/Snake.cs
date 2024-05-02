@@ -43,12 +43,12 @@ public class Snake : MonoBehaviour
 
                 if (hit.transform.CompareTag("Player"))
                 {
-                    print("Te veo");
+                    //print("Te veo");
                     TargetToPlayer();
                 }
                 else
                 {
-                    print("No te veo");
+                    //print("No te veo");
                     Spin();
                 }
 
@@ -56,7 +56,7 @@ public class Snake : MonoBehaviour
         }
         else
         {
-            print("Player out of range");
+            //print("Player out of range");
             Spin();
             Vector3 directionToPosition = (positions[index] - transform.position).normalized;
             
@@ -86,7 +86,7 @@ public class Snake : MonoBehaviour
         {
             _counter = 0;
             Instantiate(VenomBallPrefab, puntoDeDisparo.position, puntoDeDisparo.rotation);
-            print("Te disparo");
+            //print("Te disparo");
         }
     }
 

@@ -22,9 +22,10 @@ public class VenomBall : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.layer == 8)
+        Player player = collision.gameObject.GetComponent<Player>();
+        if(player != null)
         {
-            
+            player.ModifyEnergy(-damage);
         }
         Destroy(gameObject);
     }

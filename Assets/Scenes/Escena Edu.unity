@@ -1406,6 +1406,7 @@ MonoBehaviour:
   player: {fileID: 543450651872635970}
   position: {x: 0, y: 0, z: 0}
   diference: {x: -0.06, y: 5.52, z: -6.91}
+  speedRotation: 0
 --- !u!1001 &1028290535
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1944,6 +1945,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1260352715076792528, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
+      propertyPath: _jumpForce
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5596131155207780066, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: m_Name
       value: Player
