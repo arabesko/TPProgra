@@ -2,9 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("UI")]
+    [SerializeField] private Image _hp;
+
+
     [Header("Conexiones")]
     private Rigidbody _rB;
     [SerializeField] private Transform _instancePoin1;
@@ -76,6 +81,10 @@ public class Player : MonoBehaviour
                 _animator.SetTrigger("collect");
             }
         }
+        if (Input.GetMouseButtonDown(1))
+        {
+            ModifyEnergy(-20);
+        }
 
         _xAxis = Input.GetAxis("Horizontal");
         _zAxis = Input.GetAxis("Vertical");
@@ -144,16 +153,19 @@ public class Player : MonoBehaviour
         if ((_energy + ammount) >= 100)
         {
             _energy = 100;
+            
         }
         else if ((_energy + ammount) <= 0)
         {
             _animator.SetTrigger("isDeath");
             _audioSource.PlayOneShot(_goatDeath);
             Destroy(this.GetComponent<Player>(), 1);
+            
         }
         else
         {
             _energy += ammount;
+            _hp.fillAmount = ammount;
         }
     }
 }
