@@ -1072,7 +1072,7 @@ MonoBehaviour:
   _speedRotation: 4
   _jumpForce: 8
   _speed: 5
-  _energy: 5
+  _energy: 100
   _mana: 0
   _isEnabledToCollect: 0
   _InventoryLimit: 5

@@ -55,7 +55,7 @@ public class Player : MonoBehaviour
             _audioSource.PlayOneShot(_goatJump);
         }
 
-        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F))
+        if (Input.GetMouseButtonDown(0))
         {
             //Attack1();
             _animator.SetTrigger(_attack1);

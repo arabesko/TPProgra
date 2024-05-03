@@ -16,6 +16,7 @@ public class MovementGolem : MonoBehaviour
     public Transform puntoRoca;
     public int speed;
 
+    [SerializeField] Transform _player;
 
 
     void Start()
