@@ -7,6 +7,7 @@ public class LittleStone : MonoBehaviour
     private Rigidbody _prefabRB;
     private Vector3 _direction;
     public int _speed = 400;
+    public int damaga = 5;
 
     private void Awake()
     {
@@ -18,6 +19,15 @@ public class LittleStone : MonoBehaviour
         _direction = this.transform.forward * _speed;
         _prefabRB.AddForce(_direction, ForceMode.Force);
         Destroy(this.gameObject, 10);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Snake snake = collision.gameObject.GetComponent<Snake>();
+        if (snake != null)
+        {
+            snake.Damage(damaga);
+        }
     }
 
 }

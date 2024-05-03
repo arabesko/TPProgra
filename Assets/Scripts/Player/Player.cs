@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     [SerializeField] Collectibles _collect;
     [SerializeField] Inventory _myInventory;
     public Vector3 vectorTest;
-    public float jaja;
 
     [Header("Propiedades player")]
     private float _xAxis;
@@ -32,6 +31,9 @@ public class Player : MonoBehaviour
     private bool _isInventoryFull;
 
     public float anguleRock;
+    private AudioSource _audioSource;
+    public AudioClip _goatJump;
+    public AudioClip _goatDeath;
 
     [Header("Propiedades player")]
     private Vector3 _direction;
@@ -42,6 +44,7 @@ public class Player : MonoBehaviour
         _rB = this.GetComponent<Rigidbody>();
         _animator = this.GetComponent<Animator>();
         _myInventory = this.GetComponent <Inventory>();
+        _audioSource = this.GetComponent<AudioSource>();
     }
 
     void Update()
@@ -49,6 +52,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _animator.SetTrigger(_jump);
+            _audioSource.PlayOneShot(_goatJump);
         }
 
         if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F))
@@ -141,9 +145,11 @@ public class Player : MonoBehaviour
         {
             _energy = 100;
         }
-        else if ((_energy - ammount) <= 0)
+        else if ((_energy + ammount) <= 0)
         {
-            //Muerte
+            _animator.SetTrigger("isDeath");
+            _audioSource.PlayOneShot(_goatDeath);
+            Destroy(this.GetComponent<Player>(), 1);
         }
         else
         {

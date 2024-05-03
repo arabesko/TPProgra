@@ -26,7 +26,7 @@ public class VenomBall : MonoBehaviour
         if(player != null)
         {
             player.ModifyEnergy(-damage);
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }

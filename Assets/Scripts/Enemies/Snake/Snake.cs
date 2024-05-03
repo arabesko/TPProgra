@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Snake : MonoBehaviour
 {
-    [SerializeField] int life;
+    [SerializeField] int life = 20;
     [SerializeField] GameObject VenomBallPrefab;
     [SerializeField] Transform Player;
     [SerializeField] float turningSpeed;
@@ -19,9 +19,14 @@ public class Snake : MonoBehaviour
     [SerializeField] Vector3[] positions;
     [SerializeField] int index;
 
+    private AudioSource audioSource;
+    public AudioClip snakeSound;
+    private bool inZoneSound;
+
     void Start()
     {
         Player = FindObjectOfType<Player>().transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     
@@ -32,7 +37,7 @@ public class Snake : MonoBehaviour
 
         if(playerInRange == true)
         {
-            print("Player in range");
+            //print("Player in range");
             Vector3 directionToPlayer = (Player.position - transform.position).normalized;
             directionToPlayer.y = 0;
 
@@ -125,5 +130,37 @@ public class Snake : MonoBehaviour
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(position, 0.2f);
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.GetComponent<Player>() != null)
+        {
+            audioSource.PlayOneShot(snakeSound);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.GetComponent<Player>() != null)
+        {
+            audioSource.Stop();
+        }
+    }
+
+    public void Damage(int damage)
+    {
+        life -= damage;
+
+        if(life <= 0)
+        {
+            Death();
+        }
+    }
+
+    void Death()
+    {
+        this.gameObject.SetActive(false);
+        audioSource.Stop();
     }
 }
