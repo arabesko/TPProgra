@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     private Animator _animator;
     [SerializeField] Collectibles _collect;
     [SerializeField] Inventory _myInventory;
+    public Vector3 vectorTest;
+    public float jaja;
 
     [Header("Propiedades player")]
     private float _xAxis;
@@ -20,7 +22,7 @@ public class Player : MonoBehaviour
     private string _zAxisName = "zAxis";
     private string _attack1 = "attack1";
     private string _jump = "jump";
-    private float _speedRotation = 3;
+    public float _speedRotation = 1.5f;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _speed;
     [SerializeField] private float _energy;
@@ -28,6 +30,8 @@ public class Player : MonoBehaviour
     [SerializeField] private bool _isEnabledToCollect;
     [SerializeField] private int _InventoryLimit;
     private bool _isInventoryFull;
+
+    public float anguleRock;
 
     [Header("Propiedades player")]
     private Vector3 _direction;
@@ -47,7 +51,7 @@ public class Player : MonoBehaviour
             _animator.SetTrigger(_jump);
         }
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.F))
         {
             //Attack1();
             _animator.SetTrigger(_attack1);
@@ -65,7 +69,6 @@ public class Player : MonoBehaviour
                 {
                     print("La alforja está llena");
                 }
-                
                 _animator.SetTrigger("collect");
             }
         }
@@ -105,7 +108,8 @@ public class Player : MonoBehaviour
 
     private void Attack1()
     {
-       Instantiate(_bulletPrefab1, _instancePoin1.position, this.transform.rotation);
+        Quaternion exitAn = Quaternion.Euler(transform.rotation.eulerAngles.x + anguleRock, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+       Instantiate(_bulletPrefab1, _instancePoin1.position, exitAn);
     }
 
     public void Jump()

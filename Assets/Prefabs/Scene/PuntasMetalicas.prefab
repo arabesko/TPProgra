@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3544268254454610550}
   - component: {fileID: 458879496677734318}
   m_Layer: 0
-  m_Name: punta
+  m_Name: PuntasMetalicas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

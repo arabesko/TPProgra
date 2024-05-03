@@ -6,7 +6,7 @@ public class LittleStone : MonoBehaviour
 {
     private Rigidbody _prefabRB;
     private Vector3 _direction;
-    private int _speed = 400;
+    public int _speed = 400;
 
     private void Awake()
     {
