@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class MovementGolem : MonoBehaviour
@@ -13,6 +14,7 @@ public class MovementGolem : MonoBehaviour
     public GameObject rock;
 
     public Transform puntoRoca;
+    public int speed;
 
 
 
