@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    [Header("UI")]
+    [SerializeField] private Image _hp;
+
     [Header("Conexiones")]
     private Rigidbody _rB;
     [SerializeField] private Transform _instancePoin1;
@@ -68,6 +72,11 @@ public class Player : MonoBehaviour
                 
                 _animator.SetTrigger("collect");
             }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            ModifyEnergy(-33);
         }
 
         _xAxis = Input.GetAxis("Horizontal");
@@ -144,6 +153,7 @@ public class Player : MonoBehaviour
         else
         {
             _energy += ammount;
+            _hp.fillAmount += ammount/100;
         }
     }
 }
