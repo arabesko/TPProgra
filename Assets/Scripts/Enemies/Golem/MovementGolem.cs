@@ -30,7 +30,11 @@ public class MovementGolem : MonoBehaviour
     {
         ani = GetComponent<Animator>();
 
-        golem = FindObjectOfType<Player>().transform;
+
+        golem = FindObjectOfType<Player>().transform; 
+
+        
+
     }
 
     void Update()
@@ -82,7 +86,9 @@ public class MovementGolem : MonoBehaviour
 
     }
 
-    public void ApuntarAlJugador()
+
+    public void ApuntarAlJugador() 
+
     {
         print("hola4");
 
