@@ -585,6 +585,71 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 474106, guid: 069e1e44b643edc4fb4a9d4311a78fb7, type: 3}
   m_PrefabInstance: {fileID: 103253841}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &534835323
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 951946288598371076, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: rxSolida
+      value: 
+      objectReference: {fileID: 2100000, guid: 6b93b6d95f5806c419893d0f9b578530, type: 2}
+    - target: {fileID: 951946288598371076, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: rxTransAll
+      value: 
+      objectReference: {fileID: 2100000, guid: e62c84cdfd2c81e438d9a3227395f88c, type: 2}
+    - target: {fileID: 1343406411426591223, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_Name
+      value: Plataforma
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4.0387564
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.78196
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3334675231479330063, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e262676114cdb864f8990fbbe9002e83, type: 3}
 --- !u!850595691 &643064001
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -1968,7 +2033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5663724520288050898, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.6
+      value: -16.66
       objectReference: {fileID: 0}
     - target: {fileID: 5663724520288050898, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2253,6 +2318,10 @@ PrefabInstance:
     - target: {fileID: 3925616749941061743, guid: c44344af25b66d94dbf5933a4f56fba1, type: 3}
       propertyPath: m_Name
       value: Golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 3925616749941061743, guid: c44344af25b66d94dbf5933a4f56fba1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4860447463603285791, guid: c44344af25b66d94dbf5933a4f56fba1, type: 3}
       propertyPath: golem
@@ -4598,3 +4667,4 @@ SceneRoots:
   - {fileID: 5740543137869550699}
   - {fileID: 975941631961125936}
   - {fileID: 1201352801415502504}
+  - {fileID: 534835323}

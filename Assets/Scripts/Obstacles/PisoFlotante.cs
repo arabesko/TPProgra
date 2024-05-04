@@ -35,7 +35,14 @@ public class PisoFlotante : MonoBehaviour
         }
         else
         {
-            _meshR.material = rxSolida;
+            if (isDead)
+            {
+                _meshR.material = rxTransAll;
+            }
+            else
+            {
+                _meshR.material = rxSolida;
+            }
             _timeBeforeBlinkCount = 0;
             _countBlink = 0;
         }
@@ -52,9 +59,9 @@ public class PisoFlotante : MonoBehaviour
             {
                 _collider.enabled = true;
                 _meshR.material = rxSolida;
-                print("se vuelve solido");
                 isDead = false;
                 _deadCount = 0;
+
             }
         }
     }
