@@ -124,7 +124,7 @@ MonoBehaviour:
   _timeBetweenBlink: 0.35
   _timeBetweenBlinkCount: 0
   _timeToRevive: 4
-  rxSolida: {fileID: 2100000, guid: f62d19c8f28cc7345a958e3a1b5d8a58, type: 2}
+  rxSolida: {fileID: 2100000, guid: 6b93b6d95f5806c419893d0f9b578530, type: 2}
   rxTrans: {fileID: 2100000, guid: c1917f8a6b5168d478006fedb0107ea6, type: 2}
-  rxTransAll: {fileID: 2100000, guid: b1b686544f7b6474ebcdadc3943dfaeb, type: 2}
+  rxTransAll: {fileID: 2100000, guid: e62c84cdfd2c81e438d9a3227395f88c, type: 2}
   _deadCount: 0
