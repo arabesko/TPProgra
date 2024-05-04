@@ -9,6 +9,7 @@ public class AngryJump : MonoBehaviour
     [SerializeField] private float _timeOutsideMaxCount;
 
     private AudioSource _audioSource;
+
     public AudioClip _jumpUngry;
 
     private Animator _animator;
@@ -28,6 +29,7 @@ public class AngryJump : MonoBehaviour
     {
         _animator = GetComponent<Animator>();
         _audioSource = GetComponent<AudioSource>();
+        
     }
 
     void Update()

@@ -19,6 +19,8 @@ public class MovementGolem : MonoBehaviour
     public float velocidadDeGiro;
     public float timer;
 
+    public GameObject triggerAudio;
+
     private float contador;
     public LayerMask capasDetectables;
 
@@ -57,7 +59,7 @@ public class MovementGolem : MonoBehaviour
         }
         else if (golemInRange <= attackPunch)
         {
-            print("golpe");
+            //print("golpe");
         }
 
         //Para que lo siga
@@ -86,7 +88,7 @@ public class MovementGolem : MonoBehaviour
         {
             if (hit.transform.CompareTag("Player"))
             {
-                print("te sigo con la mirada");
+                //print("te sigo con la mirada");
             }
         }
     }
@@ -105,7 +107,6 @@ public class MovementGolem : MonoBehaviour
 
     public void tirarRocas()
     {
-        print("deja de tirar rocas");
         ani.SetBool("ThrowRock", false);
 
         if (contador >= timer)
@@ -125,6 +126,12 @@ public class MovementGolem : MonoBehaviour
         {
             //Muerte
             ani.SetTrigger("isDeath");
+            ActivateBigGolem activateNormalMusic = triggerAudio.GetComponent<ActivateBigGolem>();
+            if (activateNormalMusic != null) 
+            {
+                activateNormalMusic.NormalMusic();
+            }
+
             Destroy(this.GetComponent<MovementGolem>());
             Destroy(this.GetComponent<AngryJump>());
             Destroy(this.GetComponent<Rigidbody>());
