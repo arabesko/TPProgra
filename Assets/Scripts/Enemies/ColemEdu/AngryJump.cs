@@ -44,7 +44,7 @@ public class AngryJump : MonoBehaviour
             }
         }
 
-        if (_distance > 7)
+        if (_distance > 20)
         {
             _isFar = true;
         } 

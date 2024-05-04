@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 350
+  damaga: 10
 --- !u!135 &8043202606025530409
 SphereCollider:
   m_ObjectHideFlags: 0

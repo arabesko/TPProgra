@@ -10,7 +10,7 @@ public class RocasBehaviour : MonoBehaviour
 
     void Start()
     {
-       // Destroy(gameObject, Random.Range(4, 20));
+       Destroy(gameObject, Random.Range(4, 20));
     }
 
     private void Awake()
