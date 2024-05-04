@@ -11,6 +11,7 @@ public class MovementGolem : MonoBehaviour
     public Transform puntoRoca;
     public Transform player;
     public Transform golem;
+    [SerializeField] private int life = 100;
 
     public float vision;
     public float attackPunch;
@@ -29,23 +30,17 @@ public class MovementGolem : MonoBehaviour
     void Start()
     {
         ani = GetComponent<Animator>();
-
-
         golem = FindObjectOfType<Player>().transform; 
-
-        
-
     }
 
     void Update()
     {
         float golemInRange = Vector3.Distance(transform.position, player.position);
-
+        ApuntarAlJugador();
         contador += Time.deltaTime;
 
         if (golemInRange <= throwRock && golemInRange > 20)
         {
-            print("hola1");
             //Rayo Rojo
             Vector3 direccionAlJugador = (golem.position - transform.position).normalized;
             direccionAlJugador.y = 0.01f;
@@ -54,18 +49,11 @@ public class MovementGolem : MonoBehaviour
 
             if (Physics.Raycast(transform.position, direccionAlJugador, out RaycastHit hit, throwRock, capasDetectables))
             {
-                print("hola2");
-
                 if (hit.transform.CompareTag("Player"))
                 {
-                    print("te veooo");
-                    ApuntarAlJugador();
                     ani.SetBool("ThrowRock", true);
                 }
-
             }
-
-
         }
         else if (golemInRange <= attackPunch)
         {
@@ -75,23 +63,17 @@ public class MovementGolem : MonoBehaviour
         //Para que lo siga
         if (Vector3.Distance(transform.position, player.position) < vision)
         {
-            print("hola3");
-
             Vector3 direccionAlJugador = (player.position - transform.position).normalized;
             direccionAlJugador.y = 0;
 
             transform.position += direccionAlJugador * speed * Time.deltaTime;
             ApuntarAlJugador();
         }
-
     }
 
 
     public void ApuntarAlJugador() 
-
     {
-        print("hola4");
-
         Vector3 direccionAlJugador = (player.position - transform.position).normalized;
         direccionAlJugador.y = 0;
 
@@ -100,16 +82,13 @@ public class MovementGolem : MonoBehaviour
 
         Debug.DrawRay(transform.position, direccionAlJugador * throwRock, Color.blue);
 
-
         if (Physics.Raycast(golem.position, transform.forward, out RaycastHit hit, vision, capasDetectables))
         {
-
             if (hit.transform.CompareTag("Player"))
             {
                 print("te sigo con la mirada");
             }
         }
-
     }
 
     public void OnDrawGizmosSelected()
@@ -126,8 +105,7 @@ public class MovementGolem : MonoBehaviour
 
     public void tirarRocas()
     {
-        print("hola6");
-
+        print("deja de tirar rocas");
         ani.SetBool("ThrowRock", false);
 
         if (contador >= timer)
@@ -136,7 +114,21 @@ public class MovementGolem : MonoBehaviour
 
             contador = 0;
             Instantiate(rock, puntoRoca.position, puntoRoca.rotation);
+        }
+    }
 
+    public void Damage(int damage)
+    {
+        life -= damage;
+
+        if (life <= 0)
+        {
+            //Muerte
+            ani.SetTrigger("isDeath");
+            Destroy(this.GetComponent<MovementGolem>());
+            Destroy(this.GetComponent<AngryJump>());
+            Destroy(this.GetComponent<Rigidbody>());
+            Destroy(this.GetComponent<CapsuleCollider>());
         }
     }
 }
