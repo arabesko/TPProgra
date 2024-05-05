@@ -23,7 +23,7 @@ public class chaseEnemy : MonoBehaviour
 
         if (Vector3.Distance(transform.position, player.position) < rangoVision)
         {
-            Debug.Log("Te encontre wachin");
+            
             Vector3 playerDirection = (player.position - transform.position).normalized;
             playerDirection.y = 0;
 
@@ -31,7 +31,7 @@ public class chaseEnemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("Me hago la paja" + transform.position);
+            
             Vector3 positionDirection = (positions[index] - transform.position).normalized;
             positionDirection.y = 0;
 
