@@ -77,6 +77,19 @@ public class Player : MonoBehaviour
             }
         }
 
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            //Recuperar energía
+            if (_energy < 100)
+            {
+                EatApple();
+            }
+            else 
+            {
+                print("Energía a Full");
+            }
+        }
+
         _xAxis = Input.GetAxis("Horizontal");
         _zAxis = Input.GetAxis("Vertical");
 
@@ -155,5 +168,10 @@ public class Player : MonoBehaviour
         {
             _energy += ammount;
         }
+    }
+
+    private void EatApple()
+    {
+        ModifyEnergy(_myInventory.EatApple());
     }
 }

@@ -14,9 +14,23 @@ public class Inventory : MonoBehaviour
         itemsPower.Add(life);
     }
 
-    public void DeleteItem(string item, int life)
+    public int EatApple()
     {
-
+        int index;
+        int energy;
+        index = items.IndexOf("apple");
+        
+        if (index != -1)
+        {
+            energy = itemsPower[index];
+            items.RemoveAt(index);
+            itemsPower.RemoveAt(index);
+            return energy;
+        }
+        else
+        {
+            return 0;
+        }
     }
 
     public bool HasItemsy(string item)
