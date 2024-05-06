@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class UI : MonoBehaviour
-{
-    public GameObject[] vidas;
+public class UI : MonoBehaviour {
 
+    public GameObject[] vidas;
 
     public void deactivateHP(int indice)
     {
@@ -15,7 +12,6 @@ public class UI : MonoBehaviour
 
     public void activateHP(int indice)
     {
-        vidas[indice].SetActive(true);
+        vidas[(indice - 1)].SetActive(true);
     }
-  
 }

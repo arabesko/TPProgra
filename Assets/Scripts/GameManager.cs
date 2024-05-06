@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -8,10 +6,15 @@ public class GameManager : MonoBehaviour
 
     private int vidas = 10;
     
-    public void loseHP()
+    public void LoseHP()
     {
         vidas -= 1;
         ui.deactivateHP(vidas);
     }
-    
+    public void GainHP()
+    {
+        vidas += 1;
+
+        ui.activateHP(vidas);
+    }
 }

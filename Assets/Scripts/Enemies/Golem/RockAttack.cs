@@ -26,7 +26,7 @@ public class RockAttack : MonoBehaviour
         Player player = collision.gameObject.GetComponent<Player>();
         if(player != null)
         {
-            player.ModifyEnergy(-damage);
+            player.TakeDamage(damage);
         }
     }
 

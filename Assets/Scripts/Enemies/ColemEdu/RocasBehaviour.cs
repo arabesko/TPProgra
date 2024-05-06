@@ -27,7 +27,7 @@ public class RocasBehaviour : MonoBehaviour
             {
                 if(onlyOneDamage == true)
                 {
-                    player.ModifyEnergy(-_damage);
+                    player.TakeDamage(_damage);
                     onlyOneDamage = false;
                 }
                 
