@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private AudioSource _audioSource;
     public AudioClip _goatJump;
     public AudioClip _goatDeath;
+    public AudioClip _goatDamage;
     public GameplayCanvasManager gamePlayCanvas;
 
     [Header("Propiedades player")]
@@ -169,6 +170,10 @@ public class Player : MonoBehaviour
         else
         {
             _energy += ammount;
+            if (ammount < 0)
+            {
+                _audioSource.PlayOneShot(_goatDamage);
+            }
         }
     }
 
