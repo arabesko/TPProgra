@@ -17,18 +17,14 @@ public class GameplayCanvasManager : MonoBehaviour
     {
         losePanel.SetActive(true);
         winPanel.SetActive(false);
+        
     }
 
     public void onWin()
     {
         losePanel.SetActive(false);
         winPanel.SetActive(true);
-    }
-
-    public void TryAgain()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        Time.timeScale = 1f;
+        
     }
 
     public void BackToMenu()
