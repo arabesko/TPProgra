@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   element: apple
-  life: 5
+  life: 1
 --- !u!1 &4348981556680297154
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 6993047058881651629}
   - component: {fileID: 5963127239436054350}
   - component: {fileID: -242031545110414252}
+  - component: {fileID: 7065337245970433090}
+  - component: {fileID: 8502482081232671172}
   m_Layer: 0
   m_Name: RocaGolemMove
   m_TagString: Untagged
@@ -47,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 725c7c42f7c5d8b46a26145bc772ea3d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  damage: 1
 --- !u!54 &5963127239436054350
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -96,6 +98,39 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.1324987, y: 1.1943089, z: 1.2321129}
   m_Center: {x: -0.06624937, y: 0.09715444, z: -0.11605644}
+--- !u!135 &7065337245970433090
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878637467157863611}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.81
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8502482081232671172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3878637467157863611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de501682e3be38b46802943ab58ca28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6511232479330406240
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public UI ui;
 
-    private int vidas = 5;
+    private int vidas = 10;
     
     public void loseHP()
     {

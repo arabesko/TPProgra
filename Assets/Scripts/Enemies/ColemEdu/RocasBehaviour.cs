@@ -7,7 +7,7 @@ public class RocasBehaviour : MonoBehaviour
     [SerializeField] private bool _canDamage = true;
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private int _damage;
-
+    [SerializeField] private bool onlyOneDamage = true;
     void Start()
     {
        Destroy(gameObject, Random.Range(4, 20));
@@ -25,7 +25,12 @@ public class RocasBehaviour : MonoBehaviour
         {
             if (_canDamage)
             {
-                player.ModifyEnergy(-_damage);
+                if(onlyOneDamage == true)
+                {
+                    player.ModifyEnergy(-_damage);
+                    onlyOneDamage = false;
+                }
+                
             }
         }
     }
