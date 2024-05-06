@@ -97,7 +97,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _canDamage: 1
   _rb: {fileID: 0}
-  _damage: 5
+  _damage: 1
 --- !u!1 &9007046083507853938
 GameObject:
   m_ObjectHideFlags: 0
