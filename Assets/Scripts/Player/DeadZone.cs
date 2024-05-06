@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeadZone : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameplayCanvasManager gamePlayCanvas;
     void Start()
     {
         
@@ -15,7 +15,7 @@ public class DeadZone : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if (player != null)
         {
-            print("El player ha muerto");
+            gamePlayCanvas.onLose();
         }
     }
 }
