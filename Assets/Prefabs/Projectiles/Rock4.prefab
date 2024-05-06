@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 186700390948040316}
   - component: {fileID: 4434429821902720578}
   - component: {fileID: 6821210993244429927}
+  - component: {fileID: -5647577919131118712}
+  - component: {fileID: 644749402580677785}
   m_Layer: 0
   m_Name: Rock4
   m_TagString: Untagged
@@ -98,6 +100,39 @@ MonoBehaviour:
   _canDamage: 1
   _rb: {fileID: 0}
   _damage: 1
+--- !u!114 &-5647577919131118712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533087296861758116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de501682e3be38b46802943ab58ca28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!135 &644749402580677785
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3533087296861758116}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.59
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &9007046083507853938
 GameObject:
   m_ObjectHideFlags: 0

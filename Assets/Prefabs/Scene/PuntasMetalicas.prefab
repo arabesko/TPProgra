@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 7963242762401957607}
   - component: {fileID: 3544268254454610550}
   - component: {fileID: 458879496677734318}
+  - component: {fileID: 3658533087983584789}
   m_Layer: 0
   m_Name: PuntasMetalicas
   m_TagString: Untagged
@@ -152,3 +153,15 @@ CapsuleCollider:
   m_Height: 2.49
   m_Direction: 1
   m_Center: {x: 0, y: -0.33, z: 0}
+--- !u!114 &3658533087983584789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7334340371274210397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de501682e3be38b46802943ab58ca28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
