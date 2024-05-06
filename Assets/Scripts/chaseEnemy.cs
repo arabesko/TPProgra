@@ -11,6 +11,7 @@ public class chaseEnemy : MonoBehaviour
     public Transform rotationPoint;
     public float rotationSpeed;
     public float rotationRange;
+    
 
     void Start()
     {
