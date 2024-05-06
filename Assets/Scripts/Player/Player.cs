@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private AudioSource _audioSource;
     public AudioClip _goatJump;
     public AudioClip _goatDeath;
+    public GameplayCanvasManager gamePlayCanvas;
 
     [Header("Propiedades player")]
     private Vector3 _direction;
@@ -163,6 +164,7 @@ public class Player : MonoBehaviour
             _animator.SetTrigger("isDeath");
             _audioSource.PlayOneShot(_goatDeath);
             Destroy(this.GetComponent<Player>(), 1);
+            gamePlayCanvas.onLose();
         }
         else
         {

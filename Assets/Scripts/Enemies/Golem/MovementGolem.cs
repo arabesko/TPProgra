@@ -29,6 +29,10 @@ public class MovementGolem : MonoBehaviour
     public Vector3 direccionAlJugador;
     public Vector3 offsetRotation;
 
+    public GameplayCanvasManager canvas;
+    public bool isDeath;
+    public float deathCount;
+
     void Start()
     {
         ani = GetComponent<Animator>();
@@ -70,6 +74,20 @@ public class MovementGolem : MonoBehaviour
 
             transform.position += direccionAlJugador * speed * Time.deltaTime;
             ApuntarAlJugador();
+        }
+
+        if(isDeath == true)
+        {
+            print(isDeath);
+            deathCount += Time.deltaTime;
+
+            if(deathCount >= 3)
+            {
+               
+                canvas.onWin();
+                Time.timeScale = 0f;
+                Destroy(this.GetComponent<MovementGolem>());
+            }
         }
     }
 
@@ -132,10 +150,14 @@ public class MovementGolem : MonoBehaviour
                 activateNormalMusic.NormalMusic();
             }
 
-            Destroy(this.GetComponent<MovementGolem>());
+            
             Destroy(this.GetComponent<AngryJump>());
             Destroy(this.GetComponent<Rigidbody>());
             Destroy(this.GetComponent<CapsuleCollider>());
+            isDeath = true;
         }
+        
     }
+
+  
 }
