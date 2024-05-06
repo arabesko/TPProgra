@@ -1,4 +1,5 @@
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class chaseEnemy : MonoBehaviour
 {
@@ -19,19 +20,23 @@ public class chaseEnemy : MonoBehaviour
     
     void Update()
     {
-        
+
 
         if (Vector3.Distance(transform.position, player.position) < rangoVision)
         {
-            
+
             Vector3 playerDirection = (player.position - transform.position).normalized;
             playerDirection.y = 0;
 
             transform.position += playerDirection * speed * Time.deltaTime;
+            Vector3 targetDirection = player.position - transform.position;
+            transform.rotation = Quaternion.LookRotation(targetDirection);
         }
         else
         {
-            
+                           
+            transform.rotation = Quaternion.identity;
+
             Vector3 positionDirection = (positions[index] - transform.position).normalized;
             positionDirection.y = 0;
 
