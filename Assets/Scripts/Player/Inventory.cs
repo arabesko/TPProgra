@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -16,8 +15,8 @@ public class Inventory : MonoBehaviour
 
     public int EatApple()
     {
-        int index;
-        int energy;
+        int index = 0;
+        int energy = 0;
         index = items.IndexOf("apple");
         
         if (index != -1)

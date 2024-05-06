@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
+
     [Header("Conexiones")]
     private Rigidbody _rB;
     [SerializeField] private Transform _instancePoin1;
@@ -36,6 +33,7 @@ public class Player : MonoBehaviour
     public AudioClip _goatDeath;
     public AudioClip _goatDamage;
     public GameplayCanvasManager gamePlayCanvas;
+    private GameManager _gameManager;
 
     [Header("Propiedades player")]
     private Vector3 _direction;
@@ -43,10 +41,12 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
-        _rB = this.GetComponent<Rigidbody>();
-        _animator = this.GetComponent<Animator>();
-        _myInventory = this.GetComponent <Inventory>();
-        _audioSource = this.GetComponent<AudioSource>();
+        _rB = GetComponent<Rigidbody>();
+        _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
+
+        _myInventory = GetComponent<Inventory>();
+        _gameManager = FindAnyObjectByType<GameManager>();
     }
 
     void Update()
@@ -67,14 +67,9 @@ public class Player : MonoBehaviour
         {
             if (_isEnabledToCollect)
             {
-                if(_myInventory.items.Count < _InventoryLimit)
-                {
-                    _myInventory.AddItems(_collect.element, _collect.life);
-                } 
-                else
-                {
-                    print("La alforja está llena");
-                }
+                if(_myInventory.items.Count < _InventoryLimit) _myInventory.AddItems(_collect.element, _collect.life);
+                else print("La alforja está llena");
+
                 _animator.SetTrigger("collect");
             }
         }
@@ -82,14 +77,8 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             //Recuperar energía
-            if (_energy < 100)
-            {
-                EatApple();
-            }
-            else 
-            {
-                print("Energía a Full");
-            }
+            if (_energy < 100) EatApple();
+            else print("Energía a Full");
         }
 
         _xAxis = Input.GetAxis("Horizontal");
@@ -98,7 +87,7 @@ public class Player : MonoBehaviour
         _animator.SetFloat(_xAxisName, _xAxis);
         _animator.SetFloat(_zAxisName, _zAxis);
 
-        this.transform.Rotate(0, Input.GetAxis("Mouse X") * _speedRotation, 0);
+        transform.Rotate(0, Input.GetAxis("Mouse X") * _speedRotation, 0);
     }
 
     public void DeleleteCollectibles()
@@ -113,10 +102,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_xAxis != 0 || _zAxis != 0)
-        {
-            Movement();
-        }
+        if (_xAxis != 0 || _zAxis != 0) Movement();
     }
 
     private void Movement()
@@ -124,7 +110,7 @@ public class Player : MonoBehaviour
         _direction = (this.transform.right * _xAxis + this.transform.forward * _zAxis) * _speed;
         _rB.velocity = new Vector3(_direction.x, _rB.velocity.y, _direction.z);
     }
-
+    // SIN USO MOMENTANEAMENTE
     private void Attack1()
     {
         Quaternion exitAn = Quaternion.Euler(transform.rotation.eulerAngles.x + anguleRock, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
@@ -154,31 +140,37 @@ public class Player : MonoBehaviour
             _collect = null;
         }
     }
-    public void ModifyEnergy(float ammount)
+    public void Health(int value)
     {
-        if ((_energy + ammount) >= 100)
+        _energy += value;
+
+        if (_energy > 10) _energy = 10;
+        else _gameManager.GainHP();
+    }
+    public void TakeDamage(int value)
+    {
+        _energy -= value;
+
+        _audioSource.PlayOneShot(_goatDamage);
+
+        if (_energy <= 0)
         {
-            _energy = 100;
-        }
-        else if ((_energy + ammount) <= 0)
-        {
-            _animator.SetTrigger("isDeath");
-            _audioSource.PlayOneShot(_goatDeath);
-            Destroy(this.GetComponent<Player>(), 1);
-            gamePlayCanvas.onLose();
-        }
-        else
-        {
-            _energy += ammount;
-            if (ammount < 0)
-            {
-                _audioSource.PlayOneShot(_goatDamage);
-            }
+            _energy = 0;
+            DeadCondition();
         }
     }
+    private void DeadCondition()
+    {
+        _animator.SetTrigger("isDeath");
+        _audioSource.PlayOneShot(_goatDeath);
+        gamePlayCanvas.onLose();
 
+        Destroy(GetComponent<Player>(), 1);
+    }
     private void EatApple()
     {
-        ModifyEnergy(_myInventory.EatApple());
+        int _countApple = _myInventory.EatApple();
+
+        if(_countApple > 0) Health(_countApple);
     }
 }

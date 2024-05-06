@@ -26,7 +26,7 @@ public class MoveSphere : MonoBehaviour
         {
             if (onlyOne)
             {
-                player.ModifyEnergy(-damage);
+                player.TakeDamage(damage);
                 onlyOne = false;    
             }
         }
