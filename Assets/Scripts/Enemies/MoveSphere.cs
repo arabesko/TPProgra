@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MoveSphere : MonoBehaviour
 {
-    public int speed = 1;
+    public int speed = 5;
     public Vector3 direction = new Vector3(0, 0, 0);
+    public int damage = 1;
+    private bool onlyOne = true;
     void Start()
     {
         Destroy(gameObject, 10);
@@ -14,5 +16,19 @@ public class MoveSphere : MonoBehaviour
     void Update()
     {
         transform.position += direction * speed * Time.deltaTime;
+        transform.Rotate(new Vector3(1, 1, 1) * speed * Time.deltaTime);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Player player = other.GetComponent<Player>();
+        if (player != null)
+        {
+            if (onlyOne)
+            {
+                player.ModifyEnergy(-damage);
+                onlyOne = false;    
+            }
+        }
     }
 }
