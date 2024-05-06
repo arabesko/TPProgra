@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6110042879938142003}
   - component: {fileID: 1125675331695725119}
   - component: {fileID: 8460952202876541624}
+  - component: {fileID: 3240515441138048514}
   m_Layer: 0
   m_Name: VenomBall
   m_TagString: Untagged
@@ -120,4 +121,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   timeLife: 3
-  damage: 2
+  damage: 1
+--- !u!114 &3240515441138048514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6338390598374893254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de501682e3be38b46802943ab58ca28f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

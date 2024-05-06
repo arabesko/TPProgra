@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Puntas : MonoBehaviour
 {
-    private int damage = 5;
+    private int damage = 1;
     void Start()
     {
         
