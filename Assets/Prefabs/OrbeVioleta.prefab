@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13adfd40f736a9c42906aa844d4ce16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: orbe_azul
+  element: orbe_violeta
   life: 0
 --- !u!54 &302926436691208307
 Rigidbody:
