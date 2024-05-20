@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour {
@@ -10,6 +11,7 @@ public class Player : MonoBehaviour {
     [SerializeField] Collectibles _collect;
     [SerializeField] Inventory _myInventory;
     public Vector3 vectorTest;
+    public bool canMove = true;
 
     [Header("Propiedades player")]
     private float _xAxis;
@@ -51,6 +53,7 @@ public class Player : MonoBehaviour {
 
     void Update()
     {
+        if(!canMove) return;
         if (Input.GetKeyDown(KeyCode.Space))
         {
             _animator.SetTrigger(_jump);
@@ -67,12 +70,14 @@ public class Player : MonoBehaviour {
         {
             if (_isEnabledToCollect)
             {
+                canMove = false;
                 if(_myInventory.items.Count < _InventoryLimit) _myInventory.AddItems(_collect.element, _collect.life);
                 else print("La alforja está llena");
 
                 _animator.SetTrigger("collect");
             }
         }
+
 
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -90,6 +95,7 @@ public class Player : MonoBehaviour {
         transform.Rotate(0, Input.GetAxis("Mouse X") * _speedRotation, 0);
     }
 
+
     public void DeleleteCollectibles()
     {
         if (_myInventory.items.Count <= _InventoryLimit && _isInventoryFull == false)
@@ -97,6 +103,7 @@ public class Player : MonoBehaviour {
             Destroy(_collect.gameObject);
             _isEnabledToCollect = false;
             if (_myInventory.items.Count == _InventoryLimit) _isInventoryFull = true;
+            canMove = true;
         }
     }
 
