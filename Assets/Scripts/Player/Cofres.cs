@@ -8,6 +8,10 @@ public class Cofres : MonoBehaviour
     private Inventory _myInventory;
     public GameObject orbe;
     public Transform instancePoint;
+    public Animator animator;
+    public AudioSource audioSource;
+    public AudioClip openSound;
+    public AudioClip noAccessSound;
 
     private void Update()
     {
@@ -17,14 +21,19 @@ public class Cofres : MonoBehaviour
             {
                 if (_myInventory.HasItemsy("llavecabra"))
                 {
-                    print("El cofre se ha abierto");
-                    Instantiate(orbe, instancePoint.position, this.transform.rotation);
+                    audioSource.PlayOneShot(openSound);
+                    animator.SetTrigger("isOpen");
                 } else
                 {
-                    print("El cofre está cerrado, necesitas una llave");
+                    audioSource.PlayOneShot(noAccessSound);
                 }
             } 
         }
+    }
+
+    public void InstanciarOrbe()
+    {
+        Instantiate(orbe, instancePoint.position, this.transform.rotation);
     }
 
     private void OnTriggerEnter(Collider other)
