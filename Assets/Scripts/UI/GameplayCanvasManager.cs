@@ -29,6 +29,6 @@ public class GameplayCanvasManager : MonoBehaviour
 
     public void BackToMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
