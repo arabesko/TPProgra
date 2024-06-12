@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void Comenzar(string Startlevel)
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene(Startlevel);
     }
    public void Salir()

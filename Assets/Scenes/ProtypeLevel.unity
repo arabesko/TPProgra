@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26315275, g: 0.24506304, b: 0.27083504, a: 1}
+  m_IndirectSpecularColor: {r: 0.26271453, g: 0.24502566, b: 0.2702849, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3130,7 +3130,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9.590422
+      value: 47.31
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3138,7 +3138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 82.551926
+      value: 174.96
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3824,10 +3824,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 185778969}
   rangoVision: 7.28
-  speed: 3
+  speed: 5
   positions:
-  - {x: 0.16, y: 0.6, z: 62}
-  - {x: -7.07, y: 0.65, z: 61.8}
+  - {x: 37.1, y: 0.6, z: 149.8}
+  - {x: 49.2, y: 0.65, z: 157.6}
   index: 0
   rotationPoint: {fileID: 0}
   rotationSpeed: 200
@@ -8599,7 +8599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -604.543
+      value: -605.63
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11313,7 +11313,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -596.57
+      value: -596.81
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalPosition.z
@@ -21261,7 +21261,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 12.590422
+      value: 61.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.y
@@ -21269,7 +21269,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 124.87193
+      value: 202.9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalRotation.w
@@ -21955,10 +21955,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 185778969}
   rangoVision: 7.28
-  speed: 3
+  speed: 5
   positions:
-  - {x: 5.26, y: 0.6, z: 104.2}
-  - {x: -2.71, y: 0.65, z: 104.4}
+  - {x: 57.7, y: 0.6, z: 175.8}
+  - {x: 57.6, y: 0.65, z: 194.4}
   index: 0
   rotationPoint: {fileID: 0}
   rotationSpeed: 200
@@ -22703,7 +22703,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.730422
+      value: 63.82
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22711,7 +22711,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 97.811935
+      value: 184.53
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalRotation.w
@@ -23397,10 +23397,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 185778969}
   rangoVision: 7.28
-  speed: 3
+  speed: 5
   positions:
-  - {x: -0.58, y: 0.6, z: 76.7}
-  - {x: -8.91, y: 0.65, z: 77}
+  - {x: 55.2, y: 0.6, z: 160.9}
+  - {x: 66.4, y: 0.65, z: 165.7}
   index: 0
   rotationPoint: {fileID: 0}
   rotationSpeed: 200
@@ -27587,19 +27587,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1207.2
+      value: -1207.59
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -605.1531
+      value: -605.56
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -87.1
+      value: -86.73
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.21796031
+      value: 0.36696032
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalRotation.x
@@ -27607,7 +27607,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9759577
+      value: -0.9302366
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalRotation.z
@@ -27619,7 +27619,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -205.178
+      value: -136.943
       objectReference: {fileID: 0}
     - target: {fileID: 8482140757753489577, guid: d1471b448c93ed84e95284b7891415ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -51318,7 +51318,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.6704216
+      value: -26.28
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.y
@@ -51326,7 +51326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 112.921936
+      value: 192.39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalRotation.w
@@ -51994,7 +51994,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.87
   m_Height: 1.9198036
   m_Direction: 1
   m_Center: {x: 0, y: 0.8769343, z: 0}
@@ -52012,10 +52012,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 185778969}
   rangoVision: 7.28
-  speed: 3
+  speed: 5
   positions:
-  - {x: -0.64, y: 0.6, z: 91.8}
-  - {x: -8.22, y: 0.65, z: 91.6}
+  - {x: -30.2, y: 0.6, z: 162.1}
+  - {x: -30.8, y: 0.65, z: 186}
   index: 0
   rotationPoint: {fileID: 0}
   rotationSpeed: 200
@@ -58695,7 +58695,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.4104216
+      value: -33.76
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.y
@@ -58703,7 +58703,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 104.201935
+      value: 185.77
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ed70ef1dba7b29140bf33a94a2735518, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59389,10 +59389,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 185778969}
   rangoVision: 7.28
-  speed: 3
+  speed: 5
   positions:
-  - {x: -8.12, y: 0.6, z: 83}
-  - {x: -15.7, y: 0.65, z: 83.1}
+  - {x: -38.5, y: 0.6, z: 175}
+  - {x: -39.2, y: 0.65, z: 153.4}
   index: 0
   rotationPoint: {fileID: 0}
   rotationSpeed: 200
