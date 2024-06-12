@@ -7,6 +7,8 @@ public class MovementGolem : MonoBehaviour
     public Animator ani;
 
     public GameObject rock;
+    public GameObject prefKey;
+    public Transform keyPoint;
 
     public Transform puntoRoca;
     public Transform player;
@@ -84,8 +86,9 @@ public class MovementGolem : MonoBehaviour
             if(deathCount >= 3)
             {
                
-                canvas.onWin();
-                Time.timeScale = 0f;
+                //canvas.onWin();
+                //Time.timeScale = 0f;
+                Instantiate(prefKey, keyPoint.position, keyPoint.rotation);
                 Destroy(this.GetComponent<MovementGolem>());
             }
         }
@@ -149,7 +152,6 @@ public class MovementGolem : MonoBehaviour
             {
                 activateNormalMusic.NormalMusic();
             }
-
             
             Destroy(this.GetComponent<AngryJump>());
             Destroy(this.GetComponent<Rigidbody>());

@@ -190,6 +190,37 @@ Transform:
   - {fileID: 3360344683182350066}
   m_Father: {fileID: 4788847859254467461}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1450688858791576434
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7202770836450547957}
+  m_Layer: 0
+  m_Name: KeyPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7202770836450547957
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450688858791576434}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.3252866, y: -0, z: -0, w: 0.9456155}
+  m_LocalPosition: {x: 0, y: 5.950012, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5858458018641797361}
+  m_LocalEulerAnglesHint: {x: 37.966, y: 0, z: 0}
 --- !u!1 &1994405071030601965
 GameObject:
   m_ObjectHideFlags: 0
@@ -647,6 +678,7 @@ Transform:
   - {fileID: 1201960981551827131}
   - {fileID: 886097503384235387}
   - {fileID: 840321396952748946}
+  - {fileID: 7202770836450547957}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!95 &6989167336031207546
@@ -857,21 +889,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ani: {fileID: 0}
   rock: {fileID: 3878637467157863611, guid: 1d785376656ea4f4fbd951732473ffa3, type: 3}
+  prefKey: {fileID: 2537852820251036724, guid: 11e2a4113937939439e39224fbaa175b, type: 3}
+  keyPoint: {fileID: 7202770836450547957}
   puntoRoca: {fileID: 840321396952748946}
   player: {fileID: 0}
   golem: {fileID: 0}
-  life: 10
+  life: 40
   vision: 18
   attackPunch: 7
   throwRock: 25
   velocidadDeGiro: 100
   timer: 2
+  triggerAudio: {fileID: 0}
   capasDetectables:
     serializedVersion: 2
     m_Bits: 256
   speed: 1.5
   direccionAlJugador: {x: 0, y: 0, z: 0}
   offsetRotation: {x: 0, y: 0, z: 0}
+  canvas: {fileID: 0}
+  isDeath: 0
+  deathCount: 0
 --- !u!1 &4014418970391370754
 GameObject:
   m_ObjectHideFlags: 0

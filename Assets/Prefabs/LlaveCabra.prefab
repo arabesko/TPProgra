@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5624578112101549797}
-  - component: {fileID: 6448407921998662615}
   - component: {fileID: 9121573680478051617}
   - component: {fileID: 1907840934485620371}
   - component: {fileID: 1124740111938567851}
+  - component: {fileID: 8933124091963045188}
+  - component: {fileID: 7179181005418881993}
   m_Layer: 0
   m_Name: LlaveCabra
   m_TagString: Untagged
@@ -36,29 +37,6 @@ Transform:
   - {fileID: 2953037511011502416}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &6448407921998662615
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2537852820251036724}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.9236891
-  m_Height: 7.474001
-  m_Direction: 1
-  m_Center: {x: 0.10767996, y: -0.30504534, z: -0.31600907}
 --- !u!54 &9121573680478051617
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,6 +99,41 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 6.59
   m_Center: {x: 0.09, y: 0, z: -2.381306}
+--- !u!114 &8933124091963045188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537852820251036724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da26825b66947f4080fe052ad49d07a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rB: {fileID: 9121573680478051617}
+  movForce: 7
+--- !u!65 &7179181005418881993
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537852820251036724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9962473, y: 7.041614, z: 1}
+  m_Center: {x: -0.025144525, y: -0.8602515, z: 0}
 --- !u!1 &8076748575174601464
 GameObject:
   m_ObjectHideFlags: 0
