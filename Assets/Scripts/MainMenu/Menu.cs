@@ -10,6 +10,10 @@ public class Menu : MonoBehaviour
     public GameObject panelSonidos;
     public GameObject panelCreditos;
 
+    private void Start()
+    {
+        GoToprincipal();
+    }
     public void Comenzar(string Startlevel)
     {
         Time.timeScale = 1f;
@@ -23,7 +27,6 @@ public class Menu : MonoBehaviour
         panelSonidos.SetActive(false);
         panelCreditos.SetActive(false);
     }
-
     public void GoToControls()
     {
         panelPrincipal.SetActive(false);
