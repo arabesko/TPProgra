@@ -10,7 +10,7 @@ Material:
   m_Name: OrbeVioleta
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 2100000, guid: 0b178e5ca8b19ce4fadb2c9693a863de, type: 2}
-  m_ModifiedSerializedProperties: 0
+  m_ModifiedSerializedProperties: 2
   m_ValidKeywords:
   - _ALPHABLEND_ON
   m_InvalidKeywords: []
@@ -29,4 +29,5 @@ Material:
     m_Floats: []
     m_Colors:
     - _Color: {r: 0.69332695, g: 0, b: 1, a: 0.5019608}
+    - _EmissionColor: {r: 0.7042204, g: 0.41471565, b: 1.0592737, a: 1}
   m_BuildTextureStacks: []
