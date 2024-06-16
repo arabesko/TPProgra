@@ -15,18 +15,18 @@ public class Options : MonoBehaviour
     void Start()
     {
         float musicVolume;
-        mixer.GetFloat("VolumeMusic", out musicVolume);
+        mixer.GetFloat("MusicVol", out musicVolume);
         sliderMusic.value = musicVolume;
 
         float soundVolume;
-        mixer.GetFloat("VolumeSound", out soundVolume);
-        sliderMusic.value = soundVolume;
+        mixer.GetFloat("EfectsVol", out soundVolume);
+        sliderEfects.value = soundVolume;
     }
 
     public void OnVolumeMusicChange()
     {
         float musicVolume = sliderMusic.value;
-        mixer.SetFloat("VolumeMusic", musicVolume);
+        mixer.SetFloat("MusicVol", musicVolume);
 
         toggleMusic.isOn = musicVolume > -80;
     }
@@ -34,7 +34,7 @@ public class Options : MonoBehaviour
     public void OnVolumeSoundChange()
     {
         float soundVolume = sliderEfects.value;
-        mixer.SetFloat("VolumeSound", soundVolume);
+        mixer.SetFloat("EfectsVol", soundVolume);
 
         toggleSound.isOn = soundVolume > -80;
     }
@@ -48,11 +48,11 @@ public class Options : MonoBehaviour
         }
         if (toggleMusic.isOn)
         {
-            mixer.SetFloat("VolumeMusic", sliderMusic.value);
+            mixer.SetFloat("MusicVol", sliderMusic.value);
         }
         else
         {
-            mixer.SetFloat("VolumeMusic", -80f);
+            mixer.SetFloat("MusicVol", -80f);
         }
     }
     public void OnToggleSound()
@@ -64,11 +64,11 @@ public class Options : MonoBehaviour
         }
         if (toggleSound.isOn)
         {
-            mixer.SetFloat("VolumeSound", sliderEfects.value);
+            mixer.SetFloat("EfectsVol", sliderEfects.value);
         }
         else
         {
-            mixer.SetFloat("VolumeSound", -80f);
+            mixer.SetFloat("EfectsVol", -80f);
         }
     }
 }
