@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.26271453, g: 0.24502566, b: 0.2702849, a: 1}
+  m_IndirectSpecularColor: {r: 0.2633355, g: 0.2451449, b: 0.27076766, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -23739,6 +23739,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: c193f930e1bead047a14972cf532e3c9, type: 3}
     - target: {fileID: 1260352715076792528, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
+      propertyPath: _speedRotation
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260352715076792528, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: gamePlayCanvas
       value: 
       objectReference: {fileID: 906115219}
@@ -32260,13 +32264,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 846855286}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.20930837, y: 0.005083412, z: -0.0010871291, w: -0.9778359}
-  m_LocalPosition: {x: -1.0573735, y: 3.468748, z: -6.376281}
+  m_LocalRotation: {x: 0.035817165, y: -0.022028824, z: 0.004567657, w: 0.9991051}
+  m_LocalPosition: {x: 0.28, y: 2.99, z: -6.46}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1121427317}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 4.116, y: -2.511, z: 0.434}
 --- !u!114 &846855290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41312,11 +41316,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1121427317}
-  - component: {fileID: 1121427319}
+  - component: {fileID: 1121427318}
   m_Layer: 0
   m_Name: PuntoCamara
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -41328,15 +41332,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1121427316}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.609, y: 3.006, z: -15.119}
+  m_LocalRotation: {x: -0.084208824, y: 0.005078893, z: -0.00042936194, w: -0.99643517}
+  m_LocalPosition: {x: -1.83, y: 1.741, z: -58.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 846855289}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1121427319
+--- !u!114 &1121427318
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41350,7 +41354,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 185778969}
   position: {x: 0, y: 0, z: 0}
-  diference: {x: 0, y: 0, z: 0}
   speedRotation: 60
   distance: 0
 --- !u!4 &1122762736 stripped

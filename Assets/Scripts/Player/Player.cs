@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
     private string _zAxisName = "zAxis";
     private string _attack1 = "attack1";
     private string _jump = "jump";
-    public float _speedRotation = 1.5f;
+    public float _speedRotation = 60f;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _speed;
     [SerializeField] private float _energy;
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour {
             _animator.SetTrigger(_attack1);
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             if (_isEnabledToCollect)
             {
@@ -89,10 +89,18 @@ public class Player : MonoBehaviour {
         _xAxis = Input.GetAxis("Horizontal");
         _zAxis = Input.GetAxis("Vertical");
 
-        _animator.SetFloat(_xAxisName, _xAxis);
+        //_animator.SetFloat(_xAxisName, _xAxis);
         _animator.SetFloat(_zAxisName, _zAxis);
 
-        transform.Rotate(0, Input.GetAxis("Mouse X") * _speedRotation, 0);
+        if (Input.GetKey(KeyCode.A))
+        { 
+            transform.Rotate(0, _speedRotation * _xAxis * Time.deltaTime, 0);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Rotate(0, _speedRotation * _xAxis * Time.deltaTime, 0);
+        }
     }
 
 
@@ -114,7 +122,8 @@ public class Player : MonoBehaviour {
 
     private void Movement()
     {
-        _direction = (this.transform.right * _xAxis + this.transform.forward * _zAxis) * _speed;
+        //_direction = (this.transform.right * _xAxis + this.transform.forward * _zAxis) * _speed;
+        _direction = (this.transform.forward * _zAxis) * _speed;
         _rB.velocity = new Vector3(_direction.x, _rB.velocity.y, _direction.z);
     }
     // SIN USO MOMENTANEAMENTE

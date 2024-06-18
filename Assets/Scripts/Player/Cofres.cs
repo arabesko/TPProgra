@@ -15,7 +15,7 @@ public class Cofres : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.O))
+        if (Input.GetKeyUp(KeyCode.E))
         {
             if (_isInTrunk)
             {
