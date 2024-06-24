@@ -9,6 +9,7 @@ public class Menu : MonoBehaviour
     public GameObject panelControles;
     public GameObject panelSonidos;
     public GameObject panelCreditos;
+    public GameObject panelCarga;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class Menu : MonoBehaviour
         panelControles.SetActive(false);
         panelSonidos.SetActive(false);
         panelCreditos.SetActive(false);
+        panelCarga.SetActive(false);
     }
     public void GoToControls()
     {
