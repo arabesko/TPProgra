@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 8756360632076574800}
   - component: {fileID: 1337941663075560879}
   - component: {fileID: 6307235707805660799}
-  - component: {fileID: 1364290985129299704}
   - component: {fileID: 6753193639263820690}
   - component: {fileID: 302926436691208307}
   - component: {fileID: 7307612233512516588}
+  - component: {fileID: 2321693247477278399}
   m_Layer: 0
   m_Name: OrbeAzul
   m_TagString: Untagged
@@ -109,27 +109,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &1364290985129299704
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7224927156910152796}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &6753193639263820690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +164,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rB: {fileID: 0}
   movForce: 100
+--- !u!65 &2321693247477278399
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7224927156910152796}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

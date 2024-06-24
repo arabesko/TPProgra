@@ -5,6 +5,7 @@ using UnityEngine;
 public class DeadZone : MonoBehaviour
 {
     public GameplayCanvasManager gamePlayCanvas;
+    public Transform pointDeathZone;
     void Start()
     {
         
@@ -15,7 +16,10 @@ public class DeadZone : MonoBehaviour
         Player player = other.GetComponent<Player>();
         if (player != null)
         {
-            gamePlayCanvas.onLose();
+            //gamePlayCanvas.onLose();
+            player.TakeDamage(1);
+            player.transform.position = pointDeathZone.position;
+            player.transform.rotation = pointDeathZone.rotation;
         }
     }
 }

@@ -12,11 +12,11 @@ public class Player : MonoBehaviour {
     [SerializeField] Inventory _myInventory;
     public Vector3 vectorTest;
     public bool canMove = true;
+    public Transform playerMiniMap;
 
     [Header("Propiedades player")]
     private float _xAxis;
     private float _zAxis;
-    private string _xAxisName = "xAxis";
     private string _zAxisName = "zAxis";
     private string _attack1 = "attack1";
     private string _jump = "jump";
@@ -28,6 +28,8 @@ public class Player : MonoBehaviour {
     [SerializeField] private bool _isEnabledToCollect;
     [SerializeField] private int _InventoryLimit;
     private bool _isInventoryFull;
+    public bool _onTheFloor;
+    public LayerMask capasDetectables;
 
     public float anguleRock;
     private AudioSource _audioSource;
@@ -40,7 +42,10 @@ public class Player : MonoBehaviour {
     [Header("Propiedades player")]
     private Vector3 _direction;
 
-
+    private void Start()
+    {
+        playerMiniMap.localScale = new Vector3(8, 8, 8);
+    }
     private void Awake()
     {
         _rB = GetComponent<Rigidbody>();
@@ -54,10 +59,18 @@ public class Player : MonoBehaviour {
     void Update()
     {
         if(!canMove) return;
-        if (Input.GetKeyDown(KeyCode.Space))
+
+        _xAxis = Input.GetAxis("Horizontal");
+        _zAxis = Input.GetAxis("Vertical");
+
+        if (Input.GetKey(KeyCode.Space))
         {
-            _animator.SetTrigger(_jump);
-            _audioSource.PlayOneShot(_goatJump);
+            if (_onTheFloor)
+            {
+                _animator.SetTrigger(_jump);
+                _audioSource.PlayOneShot(_goatJump);
+                _onTheFloor = false;
+            }
         }
 
         if (Input.GetMouseButtonDown(0))
@@ -66,7 +79,7 @@ public class Player : MonoBehaviour {
             _animator.SetTrigger(_attack1);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && _xAxis == 0 && _zAxis == 0)
         {
             if (_isEnabledToCollect)
             {
@@ -78,16 +91,12 @@ public class Player : MonoBehaviour {
             }
         }
 
-
         if (Input.GetKeyDown(KeyCode.R))
         {
             //Recuperar energía
             if (_energy < 100) EatApple();
             else print("Energía a Full");
         }
-
-        _xAxis = Input.GetAxis("Horizontal");
-        _zAxis = Input.GetAxis("Vertical");
 
         //_animator.SetFloat(_xAxisName, _xAxis);
         _animator.SetFloat(_zAxisName, _zAxis);
@@ -144,6 +153,14 @@ public class Player : MonoBehaviour {
         if (_collect != null)
         {
             _isEnabledToCollect = true;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.layer == 6)
+        {
+            _onTheFloor = true;
         }
     }
 

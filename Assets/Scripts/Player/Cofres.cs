@@ -12,6 +12,7 @@ public class Cofres : MonoBehaviour
     public AudioSource audioSource;
     public AudioClip openSound;
     public AudioClip noAccessSound;
+    private bool onlyOneTime;
 
     private void Update()
     {
@@ -21,7 +22,12 @@ public class Cofres : MonoBehaviour
             {
                 if (_myInventory.HasItemsy("llavecabra"))
                 {
-                    audioSource.PlayOneShot(openSound);
+                    if (!onlyOneTime)
+                    { 
+                        audioSource.PlayOneShot(openSound);
+                        onlyOneTime = true;
+                    }
+                    
                     animator.SetTrigger("isOpen");
                 } else
                 {

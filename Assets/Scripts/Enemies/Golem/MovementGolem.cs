@@ -80,12 +80,9 @@ public class MovementGolem : MonoBehaviour
 
         if(isDeath == true)
         {
-            print(isDeath);
             deathCount += Time.deltaTime;
-
             if(deathCount >= 3)
             {
-               
                 //canvas.onWin();
                 //Time.timeScale = 0f;
                 Instantiate(prefKey, keyPoint.position, keyPoint.rotation);

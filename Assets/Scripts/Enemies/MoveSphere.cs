@@ -8,9 +8,10 @@ public class MoveSphere : MonoBehaviour
     public Vector3 direction = new Vector3(0, 0, 0);
     public int damage = 1;
     private bool onlyOne = true;
-    void Start()
+
+    private void Start()
     {
-        Destroy(gameObject, 10);
+        Destroy(gameObject, 3f);
     }
 
     void Update()

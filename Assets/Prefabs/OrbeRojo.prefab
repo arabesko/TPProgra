@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 2072710216709030082}
   - component: {fileID: 8994679471357864637}
   - component: {fileID: 2433566703990670891}
-  - component: {fileID: 9035927879080021295}
   - component: {fileID: 5750698228588532429}
   - component: {fileID: 5135889001762770972}
   - component: {fileID: 2777502590705210691}
+  - component: {fileID: 2983197279502708895}
   m_Layer: 0
   m_Name: OrbeRojo
   m_TagString: Untagged
@@ -109,27 +109,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.25
   m_Center: {x: 0, y: 0, z: 0}
---- !u!135 &9035927879080021295
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4558897559253899547}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5750698228588532429
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,3 +164,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rB: {fileID: 0}
   movForce: 100
+--- !u!65 &2983197279502708895
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4558897559253899547}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
