@@ -36,4 +36,17 @@ public class Inventory : MonoBehaviour
     {
         return items.Contains(item);
     }
+
+    public void DeleteOrbe(string orbe)
+    {
+        int index = 0;
+        int energy = 0;
+        index = items.IndexOf(orbe);
+
+        if (index != -1)
+        {
+            items.RemoveAt(index);
+            itemsPower.RemoveAt(index);
+        }
+    }
 }
