@@ -77,12 +77,119 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips: []
+  referencedClips:
+  - e63a77e2e14d47543aa24ae6a82760a7
+  - 4c3f45ccae5bde64e8539f0a282e7fa6
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: CabritaBebeCombinada(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CABRITABEBEORIGINAL1
+      parentName: CabritaBebeCombinada(Clone)
+      position: {x: -4.3147635, y: 1.385785, z: 2.7044687}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1.2130713, y: 1.2130713, z: 1.2130713}
+    - name: PIERNA
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 4.3147635, y: -3.5882072, z: -1.2877098}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform157
+      parentName: PIERNA
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BRAZO
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 4.3147635, y: -3.5882072, z: -1.2877098}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform156
+      parentName: BRAZO
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CUERPO
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 4.3147635, y: -3.5882072, z: -1.2877098}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform155
+      parentName: CUERPO
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BRAZO3
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 4.3147635, y: -3.5882072, z: -1.2877098}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform154
+      parentName: BRAZO3
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: OJO
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 4.3147635, y: -3.5882072, z: -1.2877098}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform153
+      parentName: OJO
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PIERNA4
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 4.3147635, y: -3.5882072, z: -1.2877098}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform152
+      parentName: PIERNA4
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: LENGUA
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 0.18864039, y: 0.20401305, z: 0.3317585}
+      rotation: {x: -0.111646004, y: -0.0055823, z: -0.2713828, w: 0.95595783}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform151
+      parentName: LENGUA
+      position: {x: 4.1261234, y: -3.7922204, z: -1.6194683}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: OJO5
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 4.3147635, y: -3.5882072, z: -1.2877098}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform150
+      parentName: OJO5
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CABEZA
+      parentName: CABRITABEBEORIGINAL1
+      position: {x: 0.0020025088, y: 0.58080655, z: -0.0016324897}
+      rotation: {x: 0.24696033, y: 0.010110221, z: 0.7781472, w: 0.577404}
+      scale: {x: 1, y: 1, z: 1}
+    - name: transform149
+      parentName: CABEZA
+      position: {x: 4.3127613, y: -4.169014, z: -1.2860774}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: CABRITABEBECOMBINADA
+      parentName: CabritaBebeCombinada(Clone)
+      position: {x: -4.314834, y: 1.385785, z: 3.614381}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
