@@ -17,6 +17,7 @@ public class BigJaula : MonoBehaviour
     public AudioClip magicSound;
     public AudioClip noAccessSound;
     private bool onlyOneTime;
+    public GameplayCanvasManager gameplayCanvas;
 
     private void Update()
     {
@@ -79,7 +80,10 @@ public class BigJaula : MonoBehaviour
     {
         yield return new WaitForSeconds(3);
         audioSource.PlayOneShot(openSound);
+        gameplayCanvas.onWin();
         Destroy(gameObject, 3f);
+
+        
 
         //LLAMAR A LA FUNCION DE VICTORIA DE LA UI
     }

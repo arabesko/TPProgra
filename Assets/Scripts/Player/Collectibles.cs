@@ -6,4 +6,5 @@ public class Collectibles : MonoBehaviour
 {
     public string element;
     public int life;
+
 }

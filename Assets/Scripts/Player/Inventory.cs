@@ -6,6 +6,7 @@ public class Inventory : MonoBehaviour
     public string nameInventory;
     public List<string> items = new List<string>();
     public List<int> itemsPower = new List<int>();
+    
 
     public void AddItems (string item, int life)
     {
