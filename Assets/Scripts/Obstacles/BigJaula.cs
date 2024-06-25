@@ -18,6 +18,7 @@ public class BigJaula : MonoBehaviour
     public AudioClip noAccessSound;
     private bool onlyOneTime;
     public GameplayCanvasManager gamePlayCanvas;
+    public GameObject todo;
 
     private void Update()
     {
@@ -79,17 +80,15 @@ public class BigJaula : MonoBehaviour
     private IEnumerator AbrirJaula()
     {
         
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(2);
         audioSource.PlayOneShot(openSound);
-        
-        Destroy(gameObject, 3f);
-        
-        yield return new WaitForEndOfFrame();
 
+        Destroy(todo.gameObject);
+
+        yield return new WaitForSeconds(1);
         if (gamePlayCanvas != null)
         {
             gamePlayCanvas.onWin();
-            Debug.Log("Canvas activado.");
         }
         
     }
