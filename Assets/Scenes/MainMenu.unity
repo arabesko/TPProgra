@@ -7408,18 +7408,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1802822196}
-        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
-        m_MethodName: Comenzar
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: ProtypeLevel
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1802822197}
         m_TargetAssemblyTypeName: CambioEscena, Assembly-CSharp
         m_MethodName: LoadScene
@@ -12509,6 +12497,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sliderBar: {fileID: 844529612}
+  panelCarga: {fileID: 1002326663}
 --- !u!4 &1806001304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 413468, guid: 1e4e7284c1efd5f4eb702c799353072c, type: 3}
