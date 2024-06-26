@@ -7,7 +7,7 @@ public class PisoFlotante : MonoBehaviour
     private MeshRenderer _meshR;
     private Collider _collider;
     [SerializeField] bool isOnTheFlor;
-    [SerializeField] private int _timeBeforeBlink = 2;
+    [SerializeField] private float _timeBeforeBlink = 2;
     [SerializeField] private float _timeBeforeBlinkCount;
     [SerializeField] private float _timeBetweenBlink = 0.35f;
     [SerializeField] private float _timeBetweenBlinkCount;

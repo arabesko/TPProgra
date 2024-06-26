@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4, y: 2.26, z: 162.1}
-  m_LocalScale: {x: 2.5253615, y: 0.16577026, z: 2.5253615}
+  m_LocalScale: {x: 4.3941293, y: 0.16577026, z: 1.5449432}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b93b6d95f5806c419893d0f9b578530, type: 2}
+  - {fileID: 2100000, guid: 4381dd928d44aed47aedb3cff3a138ae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -119,9 +119,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isOnTheFlor: 0
-  _timeBeforeBlink: 2
+  _timeBeforeBlink: 5
   _timeBeforeBlinkCount: 0
-  _timeBetweenBlink: 0.35
+  _timeBetweenBlink: 0.2
   _timeBetweenBlinkCount: 0
   _timeToRevive: 4
   rxSolida: {fileID: 2100000, guid: 6b93b6d95f5806c419893d0f9b578530, type: 2}
