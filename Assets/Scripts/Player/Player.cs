@@ -1,5 +1,7 @@
 using JetBrains.Annotations;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour {
 
@@ -13,6 +15,8 @@ public class Player : MonoBehaviour {
     public Vector3 vectorTest;
     public bool canMove = true;
     public Transform playerMiniMap;
+    public TextMeshProUGUI apples;
+    public GameObject keyCabra;
 
     [Header("Propiedades player")]
     private float _xAxis;
@@ -84,18 +88,29 @@ public class Player : MonoBehaviour {
             if (_isEnabledToCollect)
             {
                 canMove = false;
-                if(_myInventory.items.Count < _InventoryLimit) _myInventory.AddItems(_collect.element, _collect.life);
+                if (_myInventory.items.Count < _InventoryLimit)
+                {
+                    _myInventory.AddItems(_collect.element, _collect.life);
+                    apples.text = _myInventory.CountApples().ToString();
+                }
                 else print("La alforja está llena");
 
                 _animator.SetTrigger("collect");
+                if (_myInventory.HasItemsy("llavecabra") == true)
+                {
+                    keyCabra.SetActive(true);
+                }
             }
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
             //Recuperar energía
-            if (_energy < 100) EatApple();
-            else print("Energía a Full");
+            if (_energy < 10)
+            {
+                EatApple();
+                apples.text = _myInventory.CountApples().ToString();
+            }
         }
 
         //_animator.SetFloat(_xAxisName, _xAxis);

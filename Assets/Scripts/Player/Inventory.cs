@@ -37,6 +37,19 @@ public class Inventory : MonoBehaviour
         return items.Contains(item);
     }
 
+    public int CountApples() 
+    {
+        int nApples = 0;
+        foreach (string item in items) 
+        { 
+            if(item == "apple") 
+            {
+                nApples++;
+            }
+        }
+        return nApples;
+    }
+
     public void DeleteOrbe(string orbe)
     {
         int index = 0;
