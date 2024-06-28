@@ -29,13 +29,13 @@ public class Snake : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    
+
     void Update()
     {
         bool playerInRange = Vector3.Distance(transform.position, Player.position) < VisualRange;
         _counter += Time.deltaTime;
 
-        if(playerInRange == true)
+        if (playerInRange == true)
         {
             //print("Player in range");
             Vector3 directionToPlayer = (Player.position - transform.position).normalized;
@@ -43,7 +43,7 @@ public class Snake : MonoBehaviour
 
             Debug.DrawRay(transform.position, directionToPlayer * VisualRange, Color.red);
 
-            if(Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, VisualRange, DetectableLayers))
+            if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, VisualRange, DetectableLayers))
             {
 
                 if (hit.transform.CompareTag("Player"))
@@ -64,7 +64,7 @@ public class Snake : MonoBehaviour
             //print("Player out of range");
             Spin();
             Vector3 directionToPosition = (positions[index] - transform.position).normalized;
-            
+
 
             transform.position += directionToPosition * UpDownSpeed * Time.deltaTime;
 
@@ -72,12 +72,12 @@ public class Snake : MonoBehaviour
             {
                 index++;
             }
-            if(index >= positions.Length)
+            if (index >= positions.Length)
             {
-                index=0;
+                index = 0;
             }
         }
-       
+
     }
 
     private void Spin()
@@ -87,7 +87,7 @@ public class Snake : MonoBehaviour
 
     public void Shoot()
     {
-        if(_counter >= ShootTimer)
+        if (_counter >= ShootTimer)
         {
             _counter = 0;
             Instantiate(VenomBallPrefab, puntoDeDisparo.position, puntoDeDisparo.rotation);
@@ -110,7 +110,7 @@ public class Snake : MonoBehaviour
 
             if (hit.transform.CompareTag("Player"))
             {
-                
+
                 Shoot();
             }
 
@@ -125,7 +125,7 @@ public class Snake : MonoBehaviour
         Gizmos.color = Color.green;
         Gizmos.DrawWireSphere(transform.position, VisualRange);
 
-        foreach(var position in positions)
+        foreach (var position in positions)
         {
             Gizmos.color = Color.yellow;
             Gizmos.DrawSphere(position, 0.2f);
@@ -134,7 +134,7 @@ public class Snake : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.GetComponent<Player>() != null)
+        if (other.GetComponent<Player>() != null)
         {
             audioSource.PlayOneShot(snakeSound);
         }
@@ -152,7 +152,7 @@ public class Snake : MonoBehaviour
     {
         life -= damage;
 
-        if(life <= 0)
+        if (life <= 0)
         {
             Death();
         }
