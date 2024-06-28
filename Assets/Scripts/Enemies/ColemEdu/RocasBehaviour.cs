@@ -16,6 +16,7 @@ public class RocasBehaviour : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+        _rb.velocity = new Vector3(0,1,0);
     }
 
     private void OnCollisionEnter(Collision collision)

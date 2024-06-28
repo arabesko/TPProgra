@@ -15,7 +15,7 @@ public class damageManager : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            gameManager.LoseHP();
+            //gameManager.LoseHP();
         }
     }
 }
