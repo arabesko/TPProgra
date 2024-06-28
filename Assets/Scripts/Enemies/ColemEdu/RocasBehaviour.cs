@@ -10,7 +10,7 @@ public class RocasBehaviour : MonoBehaviour
     [SerializeField] private bool onlyOneDamage = true;
     void Start()
     {
-       Destroy(gameObject, Random.Range(4, 20));
+       //Destroy(gameObject, Random.Range(2, 20));
     }
 
     private void Awake()
@@ -33,6 +33,7 @@ public class RocasBehaviour : MonoBehaviour
                 
             }
         }
+        Destroy(gameObject, Random.Range(4, 7));
     }
 
     private void Update()

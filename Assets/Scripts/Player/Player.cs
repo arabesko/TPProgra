@@ -67,7 +67,7 @@ public class Player : MonoBehaviour {
         _xAxis = Input.GetAxis("Horizontal");
         _zAxis = Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             if (_onTheFloor)
             {
@@ -91,7 +91,6 @@ public class Player : MonoBehaviour {
                 if (_myInventory.items.Count < _InventoryLimit)
                 {
                     _myInventory.AddItems(_collect.element, _collect.life);
-                    apples.text = _myInventory.CountApples().ToString();
                 }
                 else print("La alforja está llena");
 
@@ -127,7 +126,10 @@ public class Player : MonoBehaviour {
         }
     }
 
-
+    public void AppleColectNumber()
+    {
+        apples.text = _myInventory.CountApples().ToString();
+    }
     public void DeleleteCollectibles()
     {
         if (_myInventory.items.Count <= _InventoryLimit && _isInventoryFull == false)

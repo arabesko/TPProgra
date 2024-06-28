@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 6dc3b7c4c911a20439067807acefc338
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Darling Coffee
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: de6bdf6094213b840842282668b8fd5a, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

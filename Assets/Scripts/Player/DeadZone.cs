@@ -6,6 +6,8 @@ public class DeadZone : MonoBehaviour
 {
     public GameplayCanvasManager gamePlayCanvas;
     public Transform pointDeathZone;
+    public AudioSource audioSource;
+    public AudioClip revivirSound;
     void Start()
     {
         
@@ -20,6 +22,7 @@ public class DeadZone : MonoBehaviour
             player.TakeDamage(1);
             player.transform.position = pointDeathZone.position;
             player.transform.rotation = pointDeathZone.rotation;
+            audioSource.PlayOneShot(revivirSound);
         }
     }
 }
