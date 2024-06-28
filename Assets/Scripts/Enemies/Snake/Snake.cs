@@ -23,10 +23,6 @@ public class Snake : MonoBehaviour
     public AudioClip snakeSound;
     private bool inZoneSound;
 
-    private float currentAngle = 0f;
-    private bool rotatingForward = true;
-    private const float maxRotationAngle = 140f;
-
     void Start()
     {
         Player = FindObjectOfType<Player>().transform;
@@ -86,28 +82,7 @@ public class Snake : MonoBehaviour
 
     private void Spin()
     {
-        //transform.Rotate(90, turningSpeed * Time.deltaTime,0);
-        float rotationStep = turningSpeed * Time.deltaTime;
-
-        if (rotatingForward)
-        {
-            currentAngle += rotationStep;
-            if (currentAngle >= maxRotationAngle)
-            {
-                rotatingForward = false;
-            }
-        }
-        else
-        {
-            currentAngle -= rotationStep;
-            if (currentAngle <= 0)
-            {
-                rotatingForward = true;
-            }
-        }
-
-        transform.localRotation = Quaternion.Euler(0, currentAngle, 0);
-
+        transform.Rotate(0, turningSpeed * Time.deltaTime, 0);
     }
 
     public void Shoot()
