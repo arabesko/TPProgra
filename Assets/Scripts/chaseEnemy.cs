@@ -43,12 +43,12 @@ public class chaseEnemy : MonoBehaviour
             
         if (shaseNow == true)
         {
-            StartCoroutine(ExplodeAfterDelay(5f));  
+            StartCoroutine(ExplodeAfterDelay(3.5f));  
 
             Vector3 playerDirection = (player.position - transform.position).normalized;
             playerDirection.y = 0;
 
-            if(Vector3.Distance(transform.position, player.position) > 1f)
+            if(Vector3.Distance(transform.position, player.position) > 0.5f)
             {
                 transform.position += playerDirection * speed * Time.deltaTime;
             }
@@ -119,5 +119,17 @@ public class chaseEnemy : MonoBehaviour
         // Dibujar el radio de la explosión
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        Player player = collision.gameObject.GetComponent<Player>();
+
+        if (player != null)
+        {
+            player.TakeDamage(1);
+            Explode();
+        }
+
     }
 }
