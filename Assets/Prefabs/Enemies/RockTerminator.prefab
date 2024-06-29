@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1613658611732903187}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InstancePoint3
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 176679073684786579}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.401}
+  m_LocalPosition: {x: 0, y: 0, z: -1.3}
   m_LocalScale: {x: 0.19993968, y: 0.13283263, z: 0.19993968}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 2853160361521875112}
   - component: {fileID: 8591394539582793660}
   - component: {fileID: 976230076637707482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -123,7 +123,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8726764813270142142}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RockTerminator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3589336269851257703}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Puntos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -189,7 +189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4668854295623323309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PuntaA
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 6294594305178651323}
   - component: {fileID: 1403809606047860158}
   - component: {fileID: 7067714874655035486}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cuboshooter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93909466541c1a541ab8b1581f6f897b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 150
+  rotationSpeed: 210
   punto1: {fileID: 8163289043050832923}
   punto2: {fileID: 7330595781016003182}
   punto3: {fileID: 1613658611732903187}
@@ -374,7 +374,7 @@ MonoBehaviour:
   damage: 0
   canShoot: 0
   ball: {fileID: 6913945238258423940, guid: 151c967737008d74eae98045a73a2545, type: 3}
-  timeToShoot: 0.5
+  timeToShoot: 0.2
   timeToShootCount: 0
   moveUP: 0
   moveDOWN: 0
@@ -388,7 +388,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3014482696488159934}
   - component: {fileID: 7529516342146168518}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -441,7 +441,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1110700965718168150}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InstancePoint4
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -457,7 +457,7 @@ Transform:
   m_GameObject: {fileID: 3214243236971272732}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.46}
+  m_LocalPosition: {x: 0, y: 0, z: 1.33}
   m_LocalScale: {x: 0.19993968, y: 0.13283263, z: 0.19993968}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -472,7 +472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8163289043050832923}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InstancePoint1
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -488,7 +488,7 @@ Transform:
   m_GameObject: {fileID: 4118968030985794472}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.458, y: 0, z: 0}
+  m_LocalPosition: {x: 1.32, y: 0, z: 0}
   m_LocalScale: {x: 0.19993968, y: 0.13283263, z: 0.19993968}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -505,7 +505,7 @@ GameObject:
   - component: {fileID: 1831793230941568834}
   - component: {fileID: 4152111628104742756}
   - component: {fileID: 554761653625902643}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -589,7 +589,7 @@ GameObject:
   - component: {fileID: 2008606429231672601}
   - component: {fileID: 5515727369296415740}
   - component: {fileID: 7899698202220041637}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -694,7 +694,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7397540933008901004}
   - component: {fileID: 7795397354469873444}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -750,7 +750,7 @@ GameObject:
   - component: {fileID: 5858362236746145756}
   - component: {fileID: 92495864827828601}
   - component: {fileID: 13743232217916050}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -854,7 +854,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7330595781016003182}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InstancePoint2
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -870,7 +870,7 @@ Transform:
   m_GameObject: {fileID: 6602814608530400862}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.47, y: 0, z: 0}
+  m_LocalPosition: {x: -1.31, y: 0, z: 0}
   m_LocalScale: {x: 0.19993968, y: 0.13283263, z: 0.19993968}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -886,7 +886,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6913518780399579583}
   - component: {fileID: 2711150721481346606}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock4 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -940,7 +940,7 @@ GameObject:
   m_Component:
   - component: {fileID: 998821474419458106}
   - component: {fileID: 5978829903518918689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rock4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -995,7 +995,7 @@ GameObject:
   - component: {fileID: 6295915061364004022}
   - component: {fileID: 2336532725282623403}
   - component: {fileID: 2146699896395970420}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1078,7 +1078,7 @@ GameObject:
   - component: {fileID: 7959724508904188413}
   - component: {fileID: 364795470470946995}
   - component: {fileID: 4834325747785713374}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: default
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1159,7 +1159,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2001971678143880672}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PuntaB
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}

@@ -10,8 +10,8 @@ public class BigJaula : MonoBehaviour
     private bool _azulOpen;
     public GameObject _rojo;
     private bool _rojoOpen;
-    public GameObject _violeta;
-    private bool _violetaOpen;
+    public GameObject _verde;
+    private bool _verdeOpen;
     public AudioSource audioSource;
     public AudioClip openSound;
     public AudioClip magicSound;
@@ -19,6 +19,7 @@ public class BigJaula : MonoBehaviour
     private bool onlyOneTime;
     public GameplayCanvasManager gamePlayCanvas;
     public GameObject todo;
+    private bool onFinalSound = true;
 
     private void Update()
     {
@@ -26,7 +27,7 @@ public class BigJaula : MonoBehaviour
         {
             if (_isInTrunk)
             {
-                if (_myInventory.HasItemsy("orbe_azul") || _myInventory.HasItemsy("orbe_rojo") || _myInventory.HasItemsy("orbe_violeta"))
+                if (_myInventory.HasItemsy("orbe_azul") || _myInventory.HasItemsy("orbe_rojo") || _myInventory.HasItemsy("orbe_verde"))
                 {
                     if (_myInventory.HasItemsy("orbe_azul"))
                     {
@@ -42,11 +43,11 @@ public class BigJaula : MonoBehaviour
                         _rojoOpen = true;
                     }
 
-                    if (_myInventory.HasItemsy("orbe_violeta"))
+                    if (_myInventory.HasItemsy("orbe_verde"))
                     {
-                        _violeta.SetActive(true);
-                        _myInventory.DeleteOrbe("orbe_violeta");
-                        _violetaOpen = true;
+                        _verde.SetActive(true);
+                        _myInventory.DeleteOrbe("orbe_verde");
+                        _verdeOpen = true;
                     }
                     audioSource.PlayOneShot(magicSound);
                 }
@@ -57,9 +58,10 @@ public class BigJaula : MonoBehaviour
             }
         }
 
-        if(_rojoOpen && _azulOpen && _violetaOpen)
+        if(_rojoOpen && _azulOpen && _verdeOpen && onFinalSound)
         {
             StartCoroutine("AbrirJaula");
+            onFinalSound = false;
         }
     }
 
@@ -82,10 +84,12 @@ public class BigJaula : MonoBehaviour
         
         yield return new WaitForSeconds(2);
         audioSource.PlayOneShot(openSound);
+        yield return new WaitForSeconds(2);
 
         Destroy(todo.gameObject);
+        Destroy(this.gameObject.GetComponent<BoxCollider>());
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         if (gamePlayCanvas != null)
         {
             gamePlayCanvas.onWin();

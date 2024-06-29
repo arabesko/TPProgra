@@ -20,14 +20,10 @@ public class Cofres : MonoBehaviour
         {
             if (_isInTrunk)
             {
-                if (_myInventory.HasItemsy("llavecabra"))
+                if (_myInventory.HasItemsy("llavecabra") && !onlyOneTime)
                 {
-                    if (!onlyOneTime)
-                    { 
-                        audioSource.PlayOneShot(openSound);
-                        onlyOneTime = true;
-                    }
-                    
+                    audioSource.PlayOneShot(openSound);
+                    onlyOneTime = true;
                     animator.SetTrigger("isOpen");
                 } else
                 {

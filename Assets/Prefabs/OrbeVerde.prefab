@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7307612233512516588}
   - component: {fileID: 2091943127364494378}
   m_Layer: 0
-  m_Name: OrbeVioleta
+  m_Name: OrbeVerde
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13adfd40f736a9c42906aa844d4ce16f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  element: orbe_violeta
+  element: orbe_verde
   life: 0
 --- !u!54 &302926436691208307
 Rigidbody:

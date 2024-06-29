@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class Player : MonoBehaviour {
 
@@ -17,6 +18,10 @@ public class Player : MonoBehaviour {
     public Transform playerMiniMap;
     public TextMeshProUGUI apples;
     public GameObject keyCabra;
+    public bool _isImune;
+    public SkinnedMeshRenderer cabraMaterialEnlace;
+    public Material cabraNormal;
+    public Material cabraRed;
 
     [Header("Propiedades player")]
     private float _xAxis;
@@ -97,7 +102,7 @@ public class Player : MonoBehaviour {
                 _animator.SetTrigger("collect");
                 if (_myInventory.HasItemsy("llavecabra") == true)
                 {
-                    keyCabra.SetActive(true);
+                    StartCoroutine("MostrarKeyCabra");
                 }
             }
         }
@@ -124,6 +129,13 @@ public class Player : MonoBehaviour {
         {
             transform.Rotate(0, _speedRotation * _xAxis * Time.deltaTime, 0);
         }
+    }
+
+    public IEnumerator MostrarKeyCabra()
+    {
+        yield return new WaitForSeconds(1);
+        keyCabra.SetActive(true);
+        yield break;
     }
 
     public void AppleColectNumber()
@@ -166,9 +178,9 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        _collect = other.gameObject.GetComponent<Collectibles>();
-        if (_collect != null)
+        if (other.gameObject.GetComponent<Collectibles>() != null)
         {
+            _collect = other.gameObject.GetComponent<Collectibles>();
             _isEnabledToCollect = true;
         }
     }
@@ -183,8 +195,7 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        _collect = other.gameObject.GetComponent<Collectibles>();
-        if (_collect != null)
+        if (other.gameObject.GetComponent<Collectibles>() != null)
         {
             _isEnabledToCollect = false;
             _collect = null;
@@ -199,15 +210,49 @@ public class Player : MonoBehaviour {
     }
     public void TakeDamage(int value)
     {
+        if (_isImune) return;
         _energy -= value;
-
         _audioSource.PlayOneShot(_goatDamage);
+        _gameManager.LoseHP();
 
         if (_energy <= 0)
         {
             _energy = 0;
             DeadCondition();
         }
+        _isImune = true;    
+        StartCoroutine("Inmunidad");
+    }
+
+    public IEnumerator Inmunidad()
+    {
+        float time = 0.3f;
+        cabraNormal = cabraMaterialEnlace.material;
+        cabraMaterialEnlace.material = cabraRed;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraNormal;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraRed;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraNormal;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraRed;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraNormal;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraRed;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraNormal;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraRed;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraNormal;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraRed;
+        yield return new WaitForSeconds(time);
+        cabraMaterialEnlace.material = cabraNormal;
+        _isImune = false;
+        yield break;
     }
     private void DeadCondition()
     {
