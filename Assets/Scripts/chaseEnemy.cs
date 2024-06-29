@@ -18,6 +18,14 @@ public class chaseEnemy : MonoBehaviour
 
     private bool isChasingPlayer = false;
 
+    public Transform punto1;
+    public Transform punto2;
+    public Transform punto3;
+    public Transform punto4;
+    public GameObject ball;
+
+    public bool shaseNow;
+
     void Start()
     {
         //if (positions.Length > 0)
@@ -30,13 +38,13 @@ public class chaseEnemy : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, player.position) < rangoVision)
         {
-            if (!isChasingPlayer)
-            {
-                isChasingPlayer = true;
-                StartCoroutine(ExplodeAfterDelay(3f));  
-            }
-
+            shaseNow = true;
+        }
             
+        if (shaseNow == true)
+        {
+            StartCoroutine(ExplodeAfterDelay(5f));  
+
             Vector3 playerDirection = (player.position - transform.position).normalized;
             playerDirection.y = 0;
 
@@ -47,13 +55,6 @@ public class chaseEnemy : MonoBehaviour
         }
         else
         {
-            if (isChasingPlayer)
-            {
-                isChasingPlayer = false;
-                StopAllCoroutines();  
-            }
-
-            
             Vector3 positionDirection = (positions[index] - transform.position).normalized;
             positionDirection.y = 0;
 
@@ -78,18 +79,32 @@ public class chaseEnemy : MonoBehaviour
     private IEnumerator ExplodeAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        if (isChasingPlayer)
-        {
-            Explode();
-        }
+        Explode();
+        yield break;
     }
 
     private void Explode()
     {
-        if (explosionEffect != null)
-        {
-            Instantiate(explosionEffect, transform.position, Quaternion.identity);
-        }
+        //Instantiate(explosionEffect, transform.position, Quaternion.identity);
+        GameObject bullet1 = Instantiate(ball);
+        bullet1.GetComponent<MoveSphere>().speed = 3;
+        bullet1.transform.position = punto1.position;
+        bullet1.GetComponent<MoveSphere>().direction = punto1.position - transform.position;
+        
+        GameObject bullet2 = Instantiate(ball);
+        bullet2.GetComponent<MoveSphere>().speed = 3;
+        bullet2.transform.position = punto2.position;
+        bullet2.GetComponent<MoveSphere>().direction = punto2.position - transform.position;
+
+        GameObject bullet3 = Instantiate(ball);
+        bullet3.GetComponent<MoveSphere>().speed = 3;
+        bullet3.transform.position = punto3.position;
+        bullet3.GetComponent<MoveSphere>().direction = punto3.position - transform.position;
+
+        GameObject bullet4 = Instantiate(ball);
+        bullet4.GetComponent<MoveSphere>().speed = 3;
+        bullet4.transform.position = punto4.position;
+        bullet4.GetComponent<MoveSphere>().direction = punto4.position - transform.position;
 
         Destroy(gameObject);  
     }
