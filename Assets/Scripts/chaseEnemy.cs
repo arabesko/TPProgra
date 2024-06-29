@@ -20,10 +20,10 @@ public class chaseEnemy : MonoBehaviour
 
     void Start()
     {
-        if (positions.Length > 0)
-        {
-            transform.position = positions[0];
-        }
+        //if (positions.Length > 0)
+        //{
+            //transform.position = positions[0];
+        //}
     }
 
     void Update()
