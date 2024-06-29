@@ -92,6 +92,7 @@ public class BigJaula : MonoBehaviour
         yield return new WaitForSeconds(3);
         if (gamePlayCanvas != null)
         {
+            Time.timeScale = 0;
             gamePlayCanvas.onWin();
         }
         
