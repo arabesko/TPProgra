@@ -9,7 +9,7 @@ public class chaseEnemy : MonoBehaviour
     public Transform player;
     public float rangoVision;
     public float speed;
-    public Vector3[] positions;
+    public Transform[] positions;
     public int index;
     public float rotationSpeed;
     public GameObject explosionEffect;  
@@ -48,24 +48,27 @@ public class chaseEnemy : MonoBehaviour
             Vector3 playerDirection = (player.position - transform.position).normalized;
             playerDirection.y = 0;
 
-            transform.position += playerDirection * speed * Time.deltaTime;
+            if(Vector3.Distance(transform.position, player.position) > 1f)
+            {
+                transform.position += playerDirection * speed * Time.deltaTime;
+            }
 
             Vector3 targetDirection = player.position - transform.position;
             transform.rotation = Quaternion.LookRotation(targetDirection);
         }
         else
         {
-            Vector3 positionDirection = (positions[index] - transform.position).normalized;
+            Vector3 positionDirection = (positions[index].position - transform.position).normalized;
             positionDirection.y = 0;
 
-            transform.position = Vector3.MoveTowards(transform.position, positions[index], speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, positions[index].position, speed * Time.deltaTime);
 
             
-            Vector3 targetDirection = positions[index] - transform.position;
+            Vector3 targetDirection = positions[index].position - transform.position;
             Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
 
-            if (Vector3.Distance(transform.position, positions[index]) < 0.1f)
+            if (Vector3.Distance(transform.position, positions[index].position) < 0.1f)
             {
                 index++;
                 if (index >= positions.Length)
@@ -113,13 +116,6 @@ public class chaseEnemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, rangoVision);
-
-        foreach (var position in positions)
-        {
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(position, 0.2f);
-        }
-
         // Dibujar el radio de la explosión
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
