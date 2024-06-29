@@ -113,7 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rB: {fileID: 9121573680478051617}
-  movForce: 7
+  movForce: 9
 --- !u!65 &7179181005418881993
 BoxCollider:
   m_ObjectHideFlags: 0

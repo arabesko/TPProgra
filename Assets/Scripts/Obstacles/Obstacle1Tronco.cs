@@ -7,11 +7,9 @@ public class Obstacle1 : MonoBehaviour
 
     [SerializeField] float speedRot;
 
-    private void FixedUpdate()
+    private void Update()
     {
         Vector3 rote = new Vector3(0, 1, 0);
-
         this.transform.Rotate(rote * speedRot * Time.deltaTime);
- 
     }
 }

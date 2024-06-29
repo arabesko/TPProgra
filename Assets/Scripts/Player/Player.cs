@@ -102,7 +102,7 @@ public class Player : MonoBehaviour {
                 _animator.SetTrigger("collect");
                 if (_myInventory.HasItemsy("llavecabra") == true)
                 {
-                    keyCabra.SetActive(true);
+                    StartCoroutine("MostrarKeyCabra");
                 }
             }
         }
@@ -129,6 +129,13 @@ public class Player : MonoBehaviour {
         {
             transform.Rotate(0, _speedRotation * _xAxis * Time.deltaTime, 0);
         }
+    }
+
+    public IEnumerator MostrarKeyCabra()
+    {
+        yield return new WaitForSeconds(1);
+        keyCabra.SetActive(true);
+        yield break;
     }
 
     public void AppleColectNumber()

@@ -10,6 +10,7 @@ public class CambioEscena : MonoBehaviour
     public GameObject panelCarga;
     public void LoadScene(string nameScene)
     {
+        print(nameScene);
         StartCoroutine(Charge(nameScene));
     }
 
