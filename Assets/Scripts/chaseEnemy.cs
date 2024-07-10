@@ -9,12 +9,16 @@ public class chaseEnemy : MonoBehaviour
     public Transform player;
     public float rangoVision;
     public float speed;
+    private float life = 20;
     public Transform[] positions;
     public int index;
     public float rotationSpeed;
     public GameObject explosionEffect;  
     public float explosionRadius = 3f;  
-    public int explosionDamage = 1;    
+    public int explosionDamage = 1;
+    public SkinnedMeshRenderer[] renderers;
+    private Material[] _originalMaterial;
+    public Material flashMaterial;
 
     private bool isChasingPlayer = false;
 
@@ -30,8 +34,14 @@ public class chaseEnemy : MonoBehaviour
     {
         //if (positions.Length > 0)
         //{
-            //transform.position = positions[0];
+        //transform.position = positions[0];
         //}
+
+        _originalMaterial = new Material[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++) 
+        {
+            _originalMaterial[i] = renderers[i].material;
+        }
     }
 
     void Update()
@@ -131,5 +141,37 @@ public class chaseEnemy : MonoBehaviour
             Explode();
         }
 
+    }
+
+    public void Damage(int damage)
+    {
+        life -= damage;
+
+        if (life <= 0)
+        {
+            Death();
+        } else
+        {
+            StartCoroutine("FlashColor");
+        }
+    }
+
+    public IEnumerator FlashColor()
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material = flashMaterial;
+        }
+        yield return new WaitForSeconds(0.07f);
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material = _originalMaterial[i];
+        }
+        yield break;
+    }
+
+    void Death()
+    {
+        Explode();
     }
 }

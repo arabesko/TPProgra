@@ -30,4 +30,5 @@ public class ActivateBigGolem : MonoBehaviour
         audiBigBoss.Stop();
         audiNormal.Play();
     }
+
 }

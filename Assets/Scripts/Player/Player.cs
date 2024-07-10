@@ -45,6 +45,8 @@ public class Player : MonoBehaviour {
     public AudioClip _goatJump;
     public AudioClip _goatDeath;
     public AudioClip _goatDamage;
+    public AudioClip eatAppleSound;
+    public AudioClip collectSound;
     public GameplayCanvasManager gamePlayCanvas;
     private GameManager _gameManager;
 
@@ -95,6 +97,7 @@ public class Player : MonoBehaviour {
                 canMove = false;
                 if (_myInventory.items.Count < _InventoryLimit)
                 {
+                    _audioSource.PlayOneShot(collectSound);
                     _myInventory.AddItems(_collect.element, _collect.life);
                 }
                 else print("La alforja está llena");
@@ -266,6 +269,10 @@ public class Player : MonoBehaviour {
     {
         int _countApple = _myInventory.EatApple();
 
-        if(_countApple > 0) Health(_countApple);
+        if (_countApple > 0)
+        {
+            _audioSource.PlayOneShot(eatAppleSound);
+            Health(_countApple);
+        }
     }
 }

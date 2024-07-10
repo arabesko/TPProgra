@@ -35,10 +35,20 @@ public class MovementGolem : MonoBehaviour
     public bool isDeath;
     public float deathCount;
 
+    public SkinnedMeshRenderer[] renderers;
+    private Material[] _originalMaterial;
+    public Material flashMaterial;
+
     void Start()
     {
         ani = GetComponent<Animator>();
-        golem = FindObjectOfType<Player>().transform; 
+        golem = FindObjectOfType<Player>().transform;
+
+        _originalMaterial = new Material[renderers.Length];
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            _originalMaterial[i] = renderers[i].material;
+        }
     }
 
     void Update()
@@ -140,6 +150,7 @@ public class MovementGolem : MonoBehaviour
     {
         life -= damage;
 
+        StartCoroutine("FlashColor");
         if (life <= 0)
         {
             //Muerte
@@ -158,5 +169,18 @@ public class MovementGolem : MonoBehaviour
         
     }
 
-  
+    public IEnumerator FlashColor()
+    {
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material = flashMaterial;
+        }
+        yield return new WaitForSeconds(0.07f);
+        for (int i = 0; i < renderers.Length; i++)
+        {
+            renderers[i].material = _originalMaterial[i];
+        }
+        yield break;
+    }
+
 }

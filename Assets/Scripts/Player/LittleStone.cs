@@ -8,6 +8,8 @@ public class LittleStone : MonoBehaviour
     private Vector3 _direction;
     public int _speed = 400;
     public int damage = 5;
+    public AudioSource audioSource;
+    public AudioClip rockSound;
 
     private void Awake()
     {
@@ -33,6 +35,16 @@ public class LittleStone : MonoBehaviour
         if (movementGolem !=null )
         {
             movementGolem.Damage(damage);
+            Destroy(gameObject);
+        }
+
+        audioSource.PlayOneShot(rockSound);
+
+        chaseEnemy miniGolem = collision.gameObject.GetComponent<chaseEnemy>();
+        if (miniGolem != null)
+        {
+            miniGolem.Damage(damage);
+            Destroy(gameObject);
         }
     }
 
