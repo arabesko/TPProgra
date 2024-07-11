@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8933124091963045188}
   - component: {fileID: 7179181005418881993}
   - component: {fileID: 5696583097753960281}
+  - component: {fileID: 6276649993360572001}
   m_Layer: 0
   m_Name: LlaveCabra
   m_TagString: Untagged
@@ -148,6 +149,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 772ceef36c106c44dbc74e7a844a8991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!136 &6276649993360572001
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2537852820251036724}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 2.53
+  m_Height: 9.22
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7920210749855706416
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,13 +292,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8076748575174601464}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.42909282, y: 0, z: 0, w: 0.9032604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.36347649, y: 0.36347649, z: 0.36347649}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5624578112101549797}
-  m_LocalEulerAnglesHint: {x: -50.82, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8548019350809803103
 MeshFilter:
   m_ObjectHideFlags: 0

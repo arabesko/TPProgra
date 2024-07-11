@@ -20,25 +20,27 @@ public class LittleStone : MonoBehaviour
     {
         _direction = this.transform.forward * _speed;
         _prefabRB.AddForce(_direction, ForceMode.Force);
-        Destroy(this.gameObject, 10);
+        Destroy(this.gameObject, 2);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        audioSource.PlayOneShot(rockSound);
         Snake snake = collision.gameObject.GetComponent<Snake>();
         if (snake != null)
         {
             snake.Damage(damage);
+            Destroy(gameObject, 0.1f);
         }
 
         MovementGolem movementGolem = collision.gameObject.GetComponent<MovementGolem>();
         if (movementGolem !=null )
         {
             movementGolem.Damage(damage);
-            Destroy(gameObject);
+            Destroy(gameObject, 0.1f);
         }
 
-        audioSource.PlayOneShot(rockSound);
+        
 
         chaseEnemy miniGolem = collision.gameObject.GetComponent<chaseEnemy>();
         if (miniGolem != null)

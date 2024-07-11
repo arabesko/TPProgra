@@ -5,6 +5,7 @@ using UnityEngine;
 public class ActivateBigGolem : MonoBehaviour
 {
     public GameObject bigGolem;
+    public GameObject uiBigGolem;
     public AudioSource audiNormal;
     public AudioSource audiBigBoss;
     private bool playOnce;
@@ -18,6 +19,7 @@ public class ActivateBigGolem : MonoBehaviour
             if (playOnce == false) 
             {
                 bigGolem.SetActive(true);
+                uiBigGolem.SetActive(true);
                 audiNormal.Stop();
                 audiBigBoss.Play();
                 playOnce = true;

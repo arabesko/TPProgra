@@ -1,14 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MovementGolem : MonoBehaviour
 {
     public Animator ani;
+    public RawImage barraVidaGolem;
+    public GameObject uiBigGolem;
+    public GameObject bigExplosion;
+    public float distancePlayer;
 
     public GameObject rock;
     public GameObject prefKey;
     public Transform keyPoint;
+
+    public GameObject humo;
+    public GameObject fuego;
 
     public Transform puntoRoca;
     public Transform player;
@@ -39,10 +47,16 @@ public class MovementGolem : MonoBehaviour
     private Material[] _originalMaterial;
     public Material flashMaterial;
 
+    private bool _canMove = true;
+    private AudioSource _audioSource;
+    public AudioClip explosion;
+    
+
     void Start()
     {
         ani = GetComponent<Animator>();
         golem = FindObjectOfType<Player>().transform;
+        _audioSource = GetComponent<AudioSource>();
 
         _originalMaterial = new Material[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
@@ -53,11 +67,12 @@ public class MovementGolem : MonoBehaviour
 
     void Update()
     {
-        float golemInRange = Vector3.Distance(transform.position, player.position);
+        if (!_canMove) return;
+        distancePlayer = Vector3.Distance(transform.position, player.position);
         ApuntarAlJugador();
         contador += Time.deltaTime;
 
-        if (golemInRange <= throwRock && golemInRange > 20)
+        if (distancePlayer <= throwRock && distancePlayer > 20)
         {
             //Rayo Rojo
             Vector3 direccionAlJugador = (golem.position - transform.position).normalized;
@@ -65,28 +80,26 @@ public class MovementGolem : MonoBehaviour
 
             Debug.DrawRay(transform.position, direccionAlJugador * throwRock, Color.red);
 
-            if (Physics.Raycast(transform.position, direccionAlJugador, out RaycastHit hit, throwRock, capasDetectables))
-            {
-                if (hit.transform.CompareTag("Player"))
-                {
+            //if (Physics.Raycast(transform.position, direccionAlJugador, out RaycastHit hit, throwRock, capasDetectables))
+            //{
+            //    if (hit.transform.CompareTag("Player"))
+            //    {
                     ani.SetBool("ThrowRock", true);
-                }
+            //    }
+            //}
+        }else
+        {
+            //Para que lo siga
+            if (Vector3.Distance(transform.position, player.position) > attackPunch)
+            {
+                Vector3 direccionAlJugador = (player.position - transform.position).normalized;
+                direccionAlJugador.y = 0;
+
+                transform.position += direccionAlJugador * speed * Time.deltaTime;
+                ApuntarAlJugador();
             }
         }
-        else if (golemInRange <= attackPunch)
-        {
-            //print("golpe");
-        }
 
-        //Para que lo siga
-        if (Vector3.Distance(transform.position, player.position) < vision)
-        {
-            Vector3 direccionAlJugador = (player.position - transform.position).normalized;
-            direccionAlJugador.y = 0;
-
-            transform.position += direccionAlJugador * speed * Time.deltaTime;
-            ApuntarAlJugador();
-        }
 
         if(isDeath == true)
         {
@@ -95,8 +108,9 @@ public class MovementGolem : MonoBehaviour
             {
                 //canvas.onWin();
                 //Time.timeScale = 0f;
-                Instantiate(prefKey, keyPoint.position, keyPoint.rotation);
-                Destroy(this.GetComponent<MovementGolem>());
+
+                Instantiate(prefKey, keyPoint.position, prefKey.transform.rotation);
+                _canMove = false;
             }
         }
     }
@@ -135,15 +149,16 @@ public class MovementGolem : MonoBehaviour
 
     public void tirarRocas()
     {
+        //if (contador >= timer)
+        //{
+            //Quaternion rotacionDeseada = Quaternion.LookRotation(-player.position);
+
+            //contador = 0;
+            GameObject rockAttack = Instantiate(rock, puntoRoca.position, puntoRoca.rotation);
+            RockAttack rocky = rockAttack.GetComponent<RockAttack>();
+            rocky.HaciaElPlayer((player.transform.position - puntoRoca.position).normalized);
+        //}
         ani.SetBool("ThrowRock", false);
-
-        if (contador >= timer)
-        {
-            Quaternion rotacionDeseada = Quaternion.LookRotation(-player.position);
-
-            contador = 0;
-            Instantiate(rock, puntoRoca.position, puntoRoca.rotation);
-        }
     }
 
     public void Damage(int damage)
@@ -151,22 +166,54 @@ public class MovementGolem : MonoBehaviour
         life -= damage;
 
         StartCoroutine("FlashColor");
-        if (life <= 0)
+
+        barraVidaGolem.rectTransform.localScale = new Vector3(0.005f * life, 0.3f, 1);
+
+        if (life >= 100)
+        {
+        } else if (life >= 50)
+        {
+            speed = 5;
+            humo.SetActive(true);
+        } else if (life >= 25)
+        {
+            speed = 7;
+            fuego.SetActive(true);
+        } else
         {
             //Muerte
             ani.SetTrigger("isDeath");
             ActivateBigGolem activateNormalMusic = triggerAudio.GetComponent<ActivateBigGolem>();
-            if (activateNormalMusic != null) 
+            if (activateNormalMusic != null)
             {
                 activateNormalMusic.NormalMusic();
             }
-            
+
+            uiBigGolem.SetActive(false);
             Destroy(this.GetComponent<AngryJump>());
             Destroy(this.GetComponent<Rigidbody>());
             Destroy(this.GetComponent<CapsuleCollider>());
             isDeath = true;
         }
-        
+
+        /*if (life <= 0)
+        {
+            
+        }*/
+    }
+
+    public void BigExplosion()
+    {
+        StartCoroutine(Morir());
+    }
+
+    public IEnumerator Morir()
+    {
+        yield return new WaitForSeconds(3);
+        bigExplosion.SetActive(true);
+        _audioSource.PlayOneShot(explosion);
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
     }
 
     public IEnumerator FlashColor()

@@ -6,7 +6,7 @@ public class RockAttack : MonoBehaviour
 {
     private Rigidbody _prefabRB;
     private Vector3 _direction;
-    private int _speed = 1000;
+    private int _speed = 2000;
     public int damage = 10;
 
     private void Awake()
@@ -16,9 +16,13 @@ public class RockAttack : MonoBehaviour
 
     void Start()
     {
-        _direction = this.transform.forward * _speed;
-        _prefabRB.AddForce(_direction, ForceMode.Force);
+        //_direction = this.transform.forward * _speed;
         Destroy(this.gameObject, 10);
+    }
+
+    public void HaciaElPlayer(Vector3 direction)
+    {
+        _prefabRB.AddForce(direction * _speed, ForceMode.Force);
     }
 
     private void OnCollisionEnter(Collision collision)
