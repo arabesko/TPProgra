@@ -22,7 +22,8 @@ public class AngryJump : MonoBehaviour
 
     [SerializeField] private int _numRocks = 10;
     [SerializeField] private Transform _player;
-    [SerializeField] private float _distance;
+    [SerializeField] private float _distancePlayer;
+
 
 
     void Start()
@@ -34,7 +35,7 @@ public class AngryJump : MonoBehaviour
 
     void Update()
     {
-        _distance = Vector3.Distance(_player.position, transform.position);
+        _distancePlayer = Vector3.Distance(_player.position, transform.position);
         if (_isFar)
         {
             _timeOutsideMaxCount += Time.deltaTime;
@@ -46,7 +47,7 @@ public class AngryJump : MonoBehaviour
             }
         }
 
-        if (_distance > 20)
+        if (_distancePlayer > 20)
         {
             _isFar = true;
         } 
@@ -81,9 +82,6 @@ public class AngryJump : MonoBehaviour
 
             Instantiate(rocks[indexRock], item, rocks[indexRock].transform.rotation);
         }
-
-
-
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -96,4 +94,5 @@ public class AngryJump : MonoBehaviour
         }
 
     }
+
 }

@@ -6,7 +6,7 @@ public class UI : MonoBehaviour {
 
     public void deactivateHP(int indice)
     {
-        if (indice <= 0) return;
+        if (indice < 0) return;
         vidas[indice].SetActive(false);
     }
 

@@ -8,6 +8,7 @@ public class RocasBehaviour : MonoBehaviour
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private int _damage;
     [SerializeField] private bool onlyOneDamage = true;
+    public bool isFire;
     void Start()
     {
        //Destroy(gameObject, Random.Range(2, 20));

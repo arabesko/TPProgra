@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
     public float _speedRotation = 60f;
     [SerializeField] private float _jumpForce;
     [SerializeField] private float _speed;
-    [SerializeField] private float _energy;
+    [SerializeField] private int _energy;
     [SerializeField] private float _mana;
     [SerializeField] private bool _isEnabledToCollect;
     [SerializeField] private int _InventoryLimit;

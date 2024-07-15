@@ -33,10 +33,10 @@ public class LittleStone : MonoBehaviour
             Destroy(gameObject, 0.1f);
         }
 
-        MovementGolem movementGolem = collision.gameObject.GetComponent<MovementGolem>();
-        if (movementGolem !=null )
+        GolemBehaviour golemBehaviour = collision.gameObject.GetComponent<GolemBehaviour>();
+        if (golemBehaviour != null )
         {
-            movementGolem.Damage(damage);
+            golemBehaviour.Damage(damage);
             Destroy(gameObject, 0.1f);
         }
 

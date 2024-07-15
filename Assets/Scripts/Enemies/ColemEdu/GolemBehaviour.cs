@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MovementGolem : MonoBehaviour
+public class GolemBehaviour : MonoBehaviour
 {
-    public Animator ani;
     public RawImage barraVidaGolem;
     public GameObject uiBigGolem;
     public GameObject bigExplosion;
-    public float distancePlayer;
+    [SerializeField] private float _distancePlayer;
 
     public GameObject rock;
     public GameObject prefKey;
@@ -20,23 +19,18 @@ public class MovementGolem : MonoBehaviour
 
     public Transform puntoRoca;
     public Transform player;
-    public Transform golem;
     [SerializeField] private int life = 100;
 
-    public float vision;
     public float attackPunch;
     public float throwRock;
     public float velocidadDeGiro;
+    [SerializeField] private float _timer;
 
     public GameObject triggerAudio;
 
-    private float _timer;
     public LayerMask capasDetectables;
 
     public float speed;
-
-    public Vector3 direccionAlJugador;
-    public Vector3 offsetRotation;
 
     public GameplayCanvasManager canvas;
     public bool isDeath;
@@ -49,13 +43,34 @@ public class MovementGolem : MonoBehaviour
     private bool _canMove = true;
     private AudioSource _audioSource;
     public AudioClip explosion;
-    
+
+
+    [SerializeField] private bool _isFar;
+    [SerializeField] private int _timeOutsideMax = 5;
+    [SerializeField] private float _timeOutsideMaxCount;
+
+    public AudioClip _jumpUngry;
+
+    private Animator _animator;
+
+    public GameObject[] rocks;
+    [SerializeField] private List<Vector3> posRocks;
+
+    public Transform LimSupIz;
+    public Transform LimInfDer;
+
+    [SerializeField] private int _numRocks = 10;
+    [SerializeField] private Transform _player;
+
+    private Vector3 _directionPlayer;
+    private Quaternion _rotationGolem;
+
+
 
     void Start()
     {
-        ani = GetComponent<Animator>();
-        golem = FindObjectOfType<Player>().transform;
         _audioSource = GetComponent<AudioSource>();
+        _animator = GetComponent<Animator>();
 
         _originalMaterial = new Material[renderers.Length];
         for (int i = 0; i < renderers.Length; i++)
@@ -67,43 +82,60 @@ public class MovementGolem : MonoBehaviour
     void Update()
     {
         if (!_canMove) return;
-        distancePlayer = Vector3.Distance(transform.position, player.position);
-        ApuntarAlJugador();
+
+        _distancePlayer = Vector3.Distance(transform.position, player.position);
+        _directionPlayer = (player.position - transform.position).normalized;
+        _directionPlayer.y = 0;
+
+        MirarPlayer();
         _timer += Time.deltaTime;
 
-        if (distancePlayer <= throwRock && distancePlayer > 20)
+        if (_distancePlayer > throwRock)
         {
-            //Rayo Rojo
-            Vector3 direccionAlJugador = (golem.position - transform.position).normalized;
-            direccionAlJugador.y = 0.01f;
-
-            Debug.DrawRay(transform.position, direccionAlJugador * throwRock, Color.red);
-
-            //if (Physics.Raycast(transform.position, direccionAlJugador, out RaycastHit hit, throwRock, capasDetectables))
-            //{
-            //    if (hit.transform.CompareTag("Player"))
-            //    {
-                    ani.SetBool("ThrowRock", true);
-            //    }
-            //}
-        }else
-        {
-            //Para que lo siga
-            if (Vector3.Distance(transform.position, player.position) > 2)
+            if (_timer > 8)
             {
-                Vector3 direccionAlJugador = (player.position - transform.position).normalized;
-                direccionAlJugador.y = 0;
-
-                transform.position += direccionAlJugador * speed * Time.deltaTime;
-                ApuntarAlJugador();
+                //Jump Attack
+                _animator.SetTrigger("isJumpAttacking");
+                _timer = 0;
+            }
+            else 
+            {
+                //caminar
+                CaminarAlPlayer();
+            }
+        } 
+        else if (_distancePlayer <= throwRock && _distancePlayer > attackPunch)
+        {
+            if (_timer > 5)
+            {
+                //Throw Attack
+                _animator.SetBool("ThrowRock", true);
+                _timer = 0;
+            } 
+            else
+            {
+                //Caminar
+                CaminarAlPlayer();
+            }
+        } else if (_distancePlayer <= attackPunch)
+        {
+            if (_timer > 4)
+            {
+                //Ataque cercano
+                _animator.SetTrigger("nearAttack");
+                _timer = 0;
+            }
+            else
+            {
+                //Caminar
+                CaminarAlPlayer();
             }
         }
 
-
-        if(isDeath == true)
+        if (isDeath == true)
         {
             deathCount += Time.deltaTime;
-            if(deathCount >= 3)
+            if (deathCount >= 3)
             {
                 Instantiate(prefKey, keyPoint.position, prefKey.transform.rotation);
                 _canMove = false;
@@ -111,31 +143,22 @@ public class MovementGolem : MonoBehaviour
         }
     }
 
-
-    public void ApuntarAlJugador() 
+    private void CaminarAlPlayer() 
     {
-        Vector3 direccionAlJugador = (player.position - transform.position).normalized;
-        direccionAlJugador.y = 0;
-
-        Quaternion rotacionDeseada = Quaternion.LookRotation(direccionAlJugador);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, rotacionDeseada, velocidadDeGiro * Time.deltaTime);
-
-        Debug.DrawRay(transform.position, direccionAlJugador * throwRock, Color.blue);
-
-        if (Physics.Raycast(golem.position, transform.forward, out RaycastHit hit, vision, capasDetectables))
+        if (Vector3.Distance(transform.position, player.position) > 2)
         {
-            if (hit.transform.CompareTag("Player"))
-            {
-                //print("te sigo con la mirada");
-            }
+            transform.position += _directionPlayer * speed * Time.deltaTime;
         }
+    }
+
+    public void MirarPlayer()
+    {
+        _rotationGolem = Quaternion.LookRotation(_directionPlayer);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, _rotationGolem, velocidadDeGiro * Time.deltaTime);
     }
 
     public void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, vision);
-
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, attackPunch);
 
@@ -143,11 +166,37 @@ public class MovementGolem : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, throwRock);
     }
 
-    public void tirarRocas()
+    public void ResetJump()
+    {
+        posRocks.Clear();
+
+        _audioSource.PlayOneShot(_jumpUngry);
+        _timeOutsideMaxCount = 0;
+
+
+        for (int i = 0; i < (_numRocks - 1); i++)
+        {
+            float posX = Random.Range(LimSupIz.position.x, LimInfDer.position.x);
+            float posY = LimSupIz.position.y;
+            float posZ = Random.Range(LimSupIz.position.z, LimInfDer.position.z);
+
+            Vector3 position = new Vector3(posX, posY, posZ);
+            posRocks.Add(position);
+        }
+
+        foreach (var item in posRocks)
+        {
+            int indexRock = Random.Range(0, rocks.Length);
+            Instantiate(rocks[indexRock], item, rocks[indexRock].transform.rotation);
+        }
+    }
+
+    public void TirarRocas()
     {
         GameObject rockAttack = Instantiate(rock, puntoRoca.position, puntoRoca.rotation);
         RockAttack rocky = rockAttack.GetComponent<RockAttack>();
         rocky.HaciaElPlayer((player.transform.position - puntoRoca.position).normalized);
+
         if (life <= 200 && life > 100)
         {
             rocky.EstadoABC('A');
@@ -160,7 +209,7 @@ public class MovementGolem : MonoBehaviour
         {
             rocky.EstadoABC('C');
         }
-        ani.SetBool("ThrowRock", false);
+        _animator.SetBool("ThrowRock", false);
     }
 
     public void Damage(int damage)
@@ -173,18 +222,21 @@ public class MovementGolem : MonoBehaviour
 
         if (life <= 200 && life > 100)
         {
-        } else if (life <= 100 && life > 50)
+        }
+        else if (life <= 100 && life > 50)
         {
             speed = 4;
             humo.SetActive(true);
-        } else if (life <= 50 && life > 0)
+        }
+        else if (life <= 50 && life > 0)
         {
             speed = 5;
             fuego.SetActive(true);
-        } else if (life <= 0)
+        }
+        else if (life <= 0)
         {
             //Muerte
-            ani.SetTrigger("isDeath");
+            _animator.SetTrigger("isDeath");
             ActivateBigGolem activateNormalMusic = triggerAudio.GetComponent<ActivateBigGolem>();
             if (activateNormalMusic != null)
             {
@@ -192,16 +244,10 @@ public class MovementGolem : MonoBehaviour
             }
 
             uiBigGolem.SetActive(false);
-            Destroy(this.GetComponent<AngryJump>());
             Destroy(this.GetComponent<Rigidbody>());
             Destroy(this.GetComponent<CapsuleCollider>());
             isDeath = true;
         }
-
-        /*if (life <= 0)
-        {
-            
-        }*/
     }
 
     public void BigExplosion()
@@ -232,4 +278,14 @@ public class MovementGolem : MonoBehaviour
         yield break;
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        Player player = collision.gameObject.GetComponent<Player>();
+
+        if (player != null)
+        {
+            player.TakeDamage(1);
+        }
+
+    }
 }

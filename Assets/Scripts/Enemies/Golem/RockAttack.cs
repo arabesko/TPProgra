@@ -6,8 +6,14 @@ public class RockAttack : MonoBehaviour
 {
     private Rigidbody _prefabRB;
     private Vector3 _direction;
-    private int _speed = 2000;
-    public int damage = 10;
+    public int _speed = 2000;
+    public int damage = 1;
+    public char etapaAcutual='A';
+    public GameObject fuego;
+    private int _timeLife;
+    public GameObject fuegoGravedad;
+    private bool _isLevelC;
+    private bool _canDamage = true;
 
     private void Awake()
     {
@@ -16,8 +22,53 @@ public class RockAttack : MonoBehaviour
 
     void Start()
     {
-        //_direction = this.transform.forward * _speed;
-        Destroy(this.gameObject, 10);
+        Destroy(this.gameObject, _timeLife);
+    }
+
+    private void Update()
+    {
+        //if (!_isLevelC) return;
+        if (_prefabRB.velocity.magnitude <= 0.01f)
+        {
+            _canDamage = false;
+        }
+    }
+
+    public void EstadoABC(char etapa)
+    {
+        etapaAcutual = etapa;
+
+        if (etapaAcutual == 'A')
+        {
+            _timeLife = 5;
+        }
+        else if (etapaAcutual == 'B')
+        {
+            fuego.SetActive(true);
+            
+            damage = 1;
+            _timeLife = 20;
+            _speed = 2000;
+        }
+        else if (etapaAcutual == 'C')
+        {
+            fuego.SetActive(true);
+            _timeLife = 30;
+            damage = 1;
+            _isLevelC = true;
+            _speed = 2000;
+            StartCoroutine(LineaFuego());
+        }
+    }
+
+    private IEnumerator LineaFuego()
+    {
+        while (_isLevelC)
+        {
+            yield return new WaitForSeconds(2f);
+            Instantiate(fuegoGravedad, transform.position, Quaternion.identity);
+        }
+        yield break;
     }
 
     public void HaciaElPlayer(Vector3 direction)
@@ -27,10 +78,13 @@ public class RockAttack : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Player player = collision.gameObject.GetComponent<Player>();
-        if(player != null)
+        if (_canDamage)
         {
-            player.TakeDamage(damage);
+            Player player = collision.gameObject.GetComponent<Player>();
+            if(player != null)
+            {
+                player.TakeDamage(damage);
+            }
         }
     }
 
