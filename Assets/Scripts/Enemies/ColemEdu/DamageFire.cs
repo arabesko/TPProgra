@@ -8,7 +8,7 @@ public class DamageFire : MonoBehaviour
     public bool _inFireZone;
     public Player player;
     Coroutine _myCoroutine;
-    public int lifeTime = 50;
+    public int lifeTime = 6;
     Rigidbody _rb;
     bool _oneTime = true;
 

@@ -14,6 +14,14 @@ public class GolemBehaviour : MonoBehaviour
     public GameObject prefKey;
     public Transform keyPoint;
 
+    public GameObject miniGolem;
+    private GameObject _miniG;
+    private MiniMiniGolem _miniGScript;
+    public Transform puntoMiniGolem1;
+    public Transform puntoMiniGolem2;
+    public Transform puntoMiniGolem3;
+    private bool _canEsbirro = true;
+
     public GameObject humo;
     public GameObject fuego;
 
@@ -43,6 +51,7 @@ public class GolemBehaviour : MonoBehaviour
     private bool _canMove = true;
     private AudioSource _audioSource;
     public AudioClip explosion;
+    public AudioClip nearAttack;
 
 
     [SerializeField] private bool _isFar;
@@ -96,7 +105,6 @@ public class GolemBehaviour : MonoBehaviour
             {
                 //Jump Attack
                 _animator.SetTrigger("isJumpAttacking");
-                _timer = 0;
             }
             else 
             {
@@ -110,7 +118,6 @@ public class GolemBehaviour : MonoBehaviour
             {
                 //Throw Attack
                 _animator.SetBool("ThrowRock", true);
-                _timer = 0;
             } 
             else
             {
@@ -119,11 +126,13 @@ public class GolemBehaviour : MonoBehaviour
             }
         } else if (_distancePlayer <= attackPunch)
         {
-            if (_timer > 4)
+            if (_timer > 4 && _canEsbirro)
             {
                 //Ataque cercano
+                _audioSource.PlayOneShot(nearAttack);
                 _animator.SetTrigger("nearAttack");
-                _timer = 0;
+                StartCoroutine(Esbirros());
+                _canEsbirro = false;
             }
             else
             {
@@ -143,6 +152,53 @@ public class GolemBehaviour : MonoBehaviour
         }
     }
 
+    public IEnumerator Esbirros()
+    {
+        int veces = 0;
+        if (life <= 200 && life > 100)
+        {
+            veces = 1;
+        }
+        else if (life <= 100 && life > 50)
+        {
+            veces = 2;
+        }
+        else if (life <= 50)
+        {
+            veces = 3;
+        }
+
+        for (int i = 0; i < veces; i++) 
+        {
+            _miniG = Instantiate(miniGolem, puntoMiniGolem1.position, puntoMiniGolem1.rotation);
+            _miniGScript = _miniG.GetComponent<MiniMiniGolem>();
+            _miniGScript.player = player;
+            _miniGScript.speed = Random.Range(7, 11);
+
+            _miniG = Instantiate(miniGolem, puntoMiniGolem2.position, puntoMiniGolem2.rotation);
+            _miniGScript = _miniG.GetComponent<MiniMiniGolem>();
+            _miniGScript.player = player;
+            _miniGScript.speed = Random.Range(7, 11);
+
+            _miniG = Instantiate(miniGolem, puntoMiniGolem3.position, puntoMiniGolem3.rotation);
+            _miniGScript = _miniG.GetComponent<MiniMiniGolem>();
+            _miniGScript.player = player;
+            _miniGScript.speed = Random.Range(7, 11);
+
+            yield return new WaitForSeconds(1f);
+        }
+        yield break;
+    }
+
+    public void RenovarTimer()
+    {
+        _timer = 0;
+        _canEsbirro = true;
+    }
+    public void ThrowRockSound()
+    {
+        _audioSource.PlayOneShot(_jumpUngry);
+    }
     private void CaminarAlPlayer() 
     {
         if (Vector3.Distance(transform.position, player.position) > 2)
@@ -193,6 +249,7 @@ public class GolemBehaviour : MonoBehaviour
 
     public void TirarRocas()
     {
+        _audioSource.PlayOneShot(_jumpUngry);
         GameObject rockAttack = Instantiate(rock, puntoRoca.position, puntoRoca.rotation);
         RockAttack rocky = rockAttack.GetComponent<RockAttack>();
         rocky.HaciaElPlayer((player.transform.position - puntoRoca.position).normalized);

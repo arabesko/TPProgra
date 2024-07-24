@@ -47,16 +47,14 @@ public class RockAttack : MonoBehaviour
             fuego.SetActive(true);
             
             damage = 1;
-            _timeLife = 20;
-            _speed = 2000;
+            _timeLife = 10;
         }
         else if (etapaAcutual == 'C')
         {
             fuego.SetActive(true);
-            _timeLife = 30;
+            _timeLife = 15;
             damage = 1;
             _isLevelC = true;
-            _speed = 2000;
             StartCoroutine(LineaFuego());
         }
     }
@@ -65,7 +63,7 @@ public class RockAttack : MonoBehaviour
     {
         while (_isLevelC)
         {
-            yield return new WaitForSeconds(2f);
+            yield return new WaitForSeconds(0.5f);
             Instantiate(fuegoGravedad, transform.position, Quaternion.identity);
         }
         yield break;

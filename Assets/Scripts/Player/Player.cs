@@ -188,9 +188,9 @@ public class Player : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if(collision.gameObject.layer == 6)
+        if (collision.gameObject.layer == 6)
         {
             _onTheFloor = true;
         }
