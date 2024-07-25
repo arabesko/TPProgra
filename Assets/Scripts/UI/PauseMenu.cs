@@ -5,15 +5,22 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] private GameObject botonPausa;
 
     [SerializeField] private GameObject menuPausa;
 
     [SerializeField] private GameObject panelSonidos;
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pause();
+        }
+    }
     public void Pause()
     {
         Time.timeScale = 0f;
-        botonPausa.SetActive(false);
+        
         menuPausa.SetActive(true);
         panelSonidos.SetActive(false);
     }
@@ -21,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     public void Reanude()
     {
         Time.timeScale = 1f;
-        botonPausa.SetActive(true);
+        
         menuPausa.SetActive(false);
         panelSonidos.SetActive(false);
     }
@@ -29,7 +36,7 @@ public class PauseMenu : MonoBehaviour
     public void GoToOptions()
     {
         Time.timeScale = 0f;
-        botonPausa.SetActive(false);
+        
         menuPausa.SetActive(false);
         panelSonidos.SetActive(true);
         
@@ -38,7 +45,7 @@ public class PauseMenu : MonoBehaviour
     public void GoTopause()
     {
         Time.timeScale = 0f;
-        botonPausa.SetActive(false);
+        
         menuPausa.SetActive(true);
         panelSonidos.SetActive(false); 
     }
