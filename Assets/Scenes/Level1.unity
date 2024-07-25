@@ -22594,6 +22594,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1260352715076792528, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
+      propertyPath: cantCollect
+      value: 
+      objectReference: {fileID: 8300000, guid: 01b446028723aa64599f055dc881e219, type: 3}
+    - target: {fileID: 1260352715076792528, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: collectSound
       value: 
       objectReference: {fileID: 8300000, guid: 989fa1d6ffbadab4db6f636fc83bd726, type: 3}
@@ -22623,7 +22627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5663724520288050898, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 5.6
+      value: 6.06
       objectReference: {fileID: 0}
     - target: {fileID: 5663724520288050898, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: m_LocalPosition.y
@@ -22631,7 +22635,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5663724520288050898, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -252.4
+      value: -262.55
       objectReference: {fileID: 0}
     - target: {fileID: 5663724520288050898, guid: ea8f8ac64f8e6bd4f9801f6ce6228159, type: 3}
       propertyPath: m_LocalRotation.w
@@ -44375,7 +44379,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8137003310943891107, guid: c44344af25b66d94dbf5933a4f56fba1, type: 3}
       propertyPath: life
-      value: 200
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8137003310943891107, guid: c44344af25b66d94dbf5933a4f56fba1, type: 3}
       propertyPath: golem
@@ -44393,6 +44397,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 185778969}
+    - target: {fileID: 8137003310943891107, guid: c44344af25b66d94dbf5933a4f56fba1, type: 3}
+      propertyPath: maxLife
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 8137003310943891107, guid: c44344af25b66d94dbf5933a4f56fba1, type: 3}
       propertyPath: LimSupIz
       value: 

@@ -27,7 +27,8 @@ public class GolemBehaviour : MonoBehaviour
 
     public Transform puntoRoca;
     public Transform player;
-    [SerializeField] private int life = 100;
+    [SerializeField] private float maxLife = 200;
+    [SerializeField] private float life;
 
     public float attackPunch;
     public float throwRock;
@@ -86,6 +87,8 @@ public class GolemBehaviour : MonoBehaviour
         {
             _originalMaterial[i] = renderers[i].material;
         }
+
+        life = maxLife;
     }
 
     void Update()
@@ -155,15 +158,15 @@ public class GolemBehaviour : MonoBehaviour
     public IEnumerator Esbirros()
     {
         int veces = 0;
-        if (life <= 200 && life > 100)
+        if (life <= maxLife && life > maxLife * 0.5f)
         {
             veces = 1;
         }
-        else if (life <= 100 && life > 50)
+        else if (life <= maxLife * 0.5f && life > maxLife * 0.25f)
         {
             veces = 2;
         }
-        else if (life <= 50)
+        else if (life <= maxLife * 0.25f)
         {
             veces = 3;
         }
@@ -254,15 +257,15 @@ public class GolemBehaviour : MonoBehaviour
         RockAttack rocky = rockAttack.GetComponent<RockAttack>();
         rocky.HaciaElPlayer((player.transform.position - puntoRoca.position).normalized);
 
-        if (life <= 200 && life > 100)
+        if (life <= maxLife && life > maxLife * 0.5f)
         {
             rocky.EstadoABC('A');
         }
-        else if (life <= 100 && life > 50)
+        else if (life <= maxLife * 0.5f && life > maxLife * 0.25f)
         {
             rocky.EstadoABC('B');
         }
-        else if (life <= 50)
+        else if (life <= maxLife * 0.25f)
         {
             rocky.EstadoABC('C');
         }
@@ -275,17 +278,21 @@ public class GolemBehaviour : MonoBehaviour
 
         StartCoroutine("FlashColor");
 
-        barraVidaGolem.rectTransform.localScale = new Vector3(0.005f * life, 0.3f, 1);
+        //1 --> maxLife
+        //x    --> life
+        // x = (1 * life) / maxLife
 
-        if (life <= 200 && life > 100)
+        barraVidaGolem.rectTransform.localScale = new Vector3(life / maxLife, 0.3f, 1);
+
+        if (life <= maxLife && life > maxLife * 0.5f)
         {
         }
-        else if (life <= 100 && life > 50)
+        else if (life <= maxLife * 0.5f && life > maxLife * 0.25f)
         {
             speed = 4;
             humo.SetActive(true);
         }
-        else if (life <= 50 && life > 0)
+        else if (life <= maxLife * 0.25f && life > 0)
         {
             speed = 5;
             fuego.SetActive(true);

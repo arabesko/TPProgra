@@ -47,6 +47,7 @@ public class Player : MonoBehaviour {
     public AudioClip _goatDamage;
     public AudioClip eatAppleSound;
     public AudioClip collectSound;
+    public AudioClip cantCollect;
     public GameplayCanvasManager gamePlayCanvas;
     private GameManager _gameManager;
 
@@ -94,15 +95,20 @@ public class Player : MonoBehaviour {
         {
             if (_isEnabledToCollect)
             {
-                canMove = false;
-                if (_myInventory.items.Count < _InventoryLimit)
+                if (_myInventory.items.Count < _InventoryLimit || _collect.element == "llavecabra" )
                 {
+                    canMove = false;
+                    _animator.SetTrigger("collect");
                     _audioSource.PlayOneShot(collectSound);
                     _myInventory.AddItems(_collect.element, _collect.life);
                 }
-                else print("La alforja está llena");
+                else
+                {
+                    canMove = true;
+                    _audioSource.PlayOneShot(cantCollect);
+                }
 
-                _animator.SetTrigger("collect");
+                
                 if (_myInventory.HasItemsy("llavecabra") == true)
                 {
                     StartCoroutine("MostrarKeyCabra");
@@ -117,6 +123,7 @@ public class Player : MonoBehaviour {
             {
                 EatApple();
                 apples.text = _myInventory.CountApples().ToString();
+                _isInventoryFull = false;
             }
         }
 
@@ -147,13 +154,13 @@ public class Player : MonoBehaviour {
     }
     public void DeleleteCollectibles()
     {
-        if (_myInventory.items.Count <= _InventoryLimit && _isInventoryFull == false)
+        if (_myInventory.items.Count <= _InventoryLimit && _isInventoryFull == false || _collect.element == "llavecabra")
         {
             Destroy(_collect.gameObject);
             _isEnabledToCollect = false;
             if (_myInventory.items.Count == _InventoryLimit) _isInventoryFull = true;
-            canMove = true;
         }
+        canMove = true;
     }
 
     private void FixedUpdate()

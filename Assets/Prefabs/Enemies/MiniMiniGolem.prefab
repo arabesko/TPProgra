@@ -389,7 +389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  speed: 7
+  speed: 6.5
   rotationSpeed: 100
   explosionEffect: {fileID: 0}
   explosionRadius: 3
